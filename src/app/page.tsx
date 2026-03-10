@@ -165,9 +165,15 @@ export default function Home() {
             </div>
 
             <div className="lore-visual" data-reveal-right>
-              <div className="lore-hex-outer" />
-              <div className="lore-hex-inner" />
-              <div className="lore-center">{lore.visualEmoji}</div>
+              <video
+                className="lore-video"
+                src="/lore-video.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+              />
+            </div>
             </div>
           </div>
         </div>
