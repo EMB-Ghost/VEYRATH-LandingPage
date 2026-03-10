@@ -138,7 +138,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============================================================
+        {/* ============================================================
           LORE
           ============================================================ */}
       <section className="veyrath-lore" id="lore">
@@ -163,7 +163,6 @@ export default function Home() {
                 ))}
               </div>
             </div>
-
             <div className="lore-visual" data-reveal-right>
               <video
                 className="lore-video"
@@ -173,7 +172,6 @@ export default function Home() {
                 loop
                 playsInline
               />
-            </div>
             </div>
           </div>
         </div>
