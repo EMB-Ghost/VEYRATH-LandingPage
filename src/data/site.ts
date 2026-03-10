@@ -1,6 +1,6 @@
 /**
  * ============================================================
- * VEYRATH — Os Reinos Fraturados | MMORPG 2026
+ * VEYRATH — Os Reinos Fraturados | MMORPG 2027
  * ARQUIVO DE CONFIGURAÇÃO CENTRAL — TOTALMENTE EDITÁVEL
  *
  * Edite este arquivo para alterar qualquer texto, link, preço,
@@ -12,14 +12,14 @@
 // METADADOS DO SITE (SEO, título, descrição)
 // ─────────────────────────────────────────────────────────────
 export const siteMetadata = {
-  title: "VEYRATH — Os Reinos Fraturados | MMORPG 2026",
+  title: "VEYRATH — Os Reinos Fraturados | MMORPG 2027",
   description:
     "O MMORPG 3D de mundo aberto que chega em 2026. Cinco reinos estilhaçados, três classes únicas, economia livre e escolhas permanentes. Wishlist no Steam agora.",
   keywords: [
     "MMORPG",
     "VEYRATH",
     "Rise of Legends",
-    "2026",
+    "2027",
     "Steam",
     "RPG",
     "mundo aberto",
@@ -27,9 +27,9 @@ export const siteMetadata = {
     "PvE",
   ],
   openGraph: {
-    title: "VEYRATH — Os Reinos Fraturados | MMORPG 2026",
+    title: "VEYRATH — Os Reinos Fraturados | MMORPG 2027",
     description:
-      "Cinco reinos estilhaçados. Três classes. Escolhas permanentes. Sua lenda começa em 2026.",
+      "Cinco reinos estilhaçados. Três classes. Escolhas permanentes. Sua lenda começa em 2027.",
     locale: "pt_BR",
   },
   twitter: {
@@ -120,8 +120,7 @@ export const realms = {
         "Planícies douradas e ruínas ancestrais banhadas por um sol eterno; o berço da esperança e o ponto de partida de todo herói.",
       badge: "Planaltos",
       image: "/Aurenthia.png",
-      //emoji: "☀️",
-    },
+     },
     {
       id: "Reino II",
       name: "Sylphae",
@@ -206,28 +205,28 @@ export const sistemas = {
     "Mecânicas que definem uma nova era para MMORPGs. Cada sistema foi construído para garantir que cada decisão importe e deixe uma marca permanente no mundo.",
   list: [
     {
-      icon: "🛡️",
+      icon: "🧙🏻‍♂️",
       category: "Nível 40+",
       name: "SISTEMA DE AURA",
       description:
         "Personalize seu personagem visual e ganhe bônus passivos baseados em escolhas estéticas únicas. Sua aura reflete sua história de jogo e intimida adversários no PvP.",
     },
     {
-      icon: "⚔️",
+      icon: "🧬",
       category: "Exclusivo",
       name: "SUBCLASSE PERMANENTE",
       description:
         "Escolhas verdadeiramente definitivas. No nível 30 e 60 você define sua subclasse para sempre — não há reset. Cada personagem é genuinamente único no servidor.",
     },
     {
-      icon: "💎",
+      icon: "💰",
       category: "Economia Real",
       name: "ECONOMIA LIVRE",
       description:
         "Um mercado 100% controlado pelos jogadores. Forje, encante, negocie e domine as forças econômicas entre os cinco reinos. Sem intervenção do sistema.",
     },
     {
-      icon: "💀",
+      icon: "⚰️",
       category: "Risco Alto",
       name: "PVP DE ALTO RISCO",
       description:
@@ -247,13 +246,13 @@ export const sistemas = {
 // SEÇÃO PRE-ORDER
 // ─────────────────────────────────────────────────────────────
 export const preorder = {
-  label: "The Awakening Begins",
-  title: "SECURE YOUR LEGACY",
+  label: "A Caçada começa AGORA",
+  title: "Garanta já",
   subtitle:
-    "Escolha seu caminho no reino estilhaçado de Veyrath. Pre-orders de acesso antecipado concedem status exclusivo de fundador, skins lendárias e títulos eternos.",
+    "Escolha seu caminho no reino fragmentado de Veyrath. Pre-orders de acesso antecipado concedem status exclusivo de fundador, skins lendárias e títulos eternos.",
   // Duração do countdown: dias, horas, minutos, segundos
   countdownDuration: {
-    days: 3,
+    days: 300,
     hours: 14,
     minutes: 22,
     seconds: 58,
@@ -265,7 +264,7 @@ export const preorder = {
       emoji: "🪖",
       tier: "Acesso Básico ao Founder",
       name: "Initiate Bundle",
-      price: "$29.99",
+      price: "R$29.99",
       features: [
         { main: "Early Access" },
         {
