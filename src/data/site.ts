@@ -70,9 +70,9 @@ export const navigation = {
 // SEÇÃO HERO
 // ─────────────────────────────────────────────────────────────
 export const hero = {
-  eyebrow: "PC · STEAM · LANÇAMENTO 2026",
+  eyebrow: "PC · STEAM · LANÇAMENTO 2027",
   title: "VEYRATH",
-  tagline: '"Os Reinos Fraturados — Suas escolhas nunca se apagam"',
+  tagline: '"Os Reinos Fraturados — O novo MMORPG que você precisa!"',
   ctaPrimary: "🛒 Wishlist no Steam",
   ctaSecondary: "⚔ Entrar no Discord",
   badges: [
@@ -119,7 +119,7 @@ export const realms = {
       description:
         "Planícies douradas e ruínas ancestrais banhadas por um sol eterno; o berço da esperança e o ponto de partida de todo herói.",
       badge: "Planaltos",
-      image: "/public/Aurenthia.png",
+      image: "/Aurenthia.png",
       //emoji: "☀️",
     },
     {
@@ -168,7 +168,7 @@ export const classes = {
     {
       id: 0,
       tab: "Protetores",
-      image: "/Protetores.png",
+      image: "/protetores.png",
       name: "PROTETORES",
       desc: "Vanguardas inquebráveis. Absorvem o caos da batalha enquanto protegem aliados e controlam zonas inteiras.",
       traits: ["Tanque", "Defesa", "Suporte"],
@@ -177,7 +177,7 @@ export const classes = {
     {
       id: 1,
       tab: "Algozes",
-      image: "/Algozes.png",
+      image: "/algozes.png",
       name: "ALGOZES",
       desc: "Lâminas que cortam o véu da realidade. Especialistas em dano explosivo e mobilidade extrema no campo de batalha.",
       traits: ["DPS", "Mobilidade", "Furtivo"],
@@ -186,7 +186,7 @@ export const classes = {
     {
       id: 2,
       tab: "Teurgos",
-      image: "/Teurgos.png",
+      image: "/teurgos.png",
       name: "TEURGOS",
       desc: "Canalizadores de energia natural pura. Manipulam a ordem e o caos com feitiços que alteram a estrutura do combate.",
       traits: ["Magia", "Arcano", "Controle"],
