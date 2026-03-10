@@ -66,8 +66,8 @@ body {
 /* Crystal cursor container */
 #custom-cursor {
   position: fixed;
-  width: 96px;
-  height: 96px;
+  width: 48px;
+  height: 48px;
   pointer-events: none;
   z-index: 999999;
   transform: translate(-50%, -50%);
