@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Cursor Cristal Mágico com Aura Móvel</title>
+<style>
+  * { cursor: none !important; } /* esconde o cursor padrão */
+
+  body {
+    margin: 0;
+    height: 100vh;
+    background: #0a0921;
+    overflow: hidden;
+  }
+
+  #custom-cursor {
+    position: fixed;
+    width: 96px;
+    height: 96px;
+    pointer-events: none;
+    z-index: 999999;
+    transform: translate(-50%, -50%);
+  }
+
+  .gem-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .gem {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 20px #67e8f9) drop-shadow(0 0 45px #22d3ee);
+    animation: gemPulse 2.2s ease-in-out infinite;
+  }
+
+  /* Aura 1 (externa, mais lenta e grande) */
+  .aura1 {
+    position: absolute;
+    top: -55%;
+    left: -55%;
+    width: 210%;
+    height: 210%;
+    background: radial-gradient(circle, rgba(103,232,249,0.45) 10%, rgba(34,211,238,0.18) 50%, transparent 75%);
+    border-radius: 50%;
+    filter: blur(28px);
+    z-index: -1;
+    animation: auraBreath 4.8s ease-in-out infinite alternate,
+               auraRotate 24s linear infinite;
+  }
+
+  /* Aura 2 (interna, mais intensa e rápida) */
+  .aura2 {
+    position: absolute;
+    top: -40%;
+    left: -40%;
+    width: 180%;
+    height: 180%;
+    background: radial-gradient(circle, rgba(165,243,252,0.65) 5%, transparent 60%);
+    border-radius: 50%;
+    filter: blur(18px);
+    z-index: -2;
+    animation: auraBreath 2.9s ease-in-out infinite alternate reverse,
+               auraRotate 15s linear infinite reverse;
+  }
+
+  @keyframes gemPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.07); }
+  }
+
+  @keyframes auraBreath {
+    from { transform: scale(0.88); }
+    to { transform: scale(1.18); }
+  }
+
+  @keyframes auraRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+</style>
+</head>
+<body>
+
+<div id="custom-cursor">
+  <div class="gem-container">
+    <div class="aura1"></div>
+    <div class="aura2"></div>
+    <img src="gem-cursor.png" class="gem" alt="Cursor Cristal">
+  </div>
+</div>
+
+<script>
+  const cursor = document.getElementById('custom-cursor');
+  let mouseX = 0, mouseY = 0;
+  let cursorX = 0, cursorY = 0;
+
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  function animate() {
+    // Movimento suave com "lag" premium (fica mais mágico)
+    cursorX += (mouseX - cursorX) * 0.14;
+    cursorY += (mouseY - cursorY) * 0.14;
+
+    cursor.style.left = cursorX + 'px';
+    cursor.style.top = cursorY + 'px';
+    requestAnimationFrame(animate);
+  }
+  animate();
+</script>
+</body>
+</html>

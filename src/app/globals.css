@@ -1,0 +1,2214 @@
+@import "tailwindcss";
+
+/* ============================================================
+   VEYRATH — Rise of Legends | MMORPG 2026
+   Global Styles — WordPress Compatible
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --ink: #04020c;
+  --void: #080412;
+  --abyss: #0d0720;
+  --ember: #b8860b;
+  --gold: #d4a017;
+  --gold-hi: #f5c842;
+  --gold-glow: rgba(212, 160, 23, 0.55);
+  --rune: #9a6ff5;
+  --rune-dim: #4a2a8a;
+  --ash: #c8bbdd;
+  --text-dim: rgba(200, 187, 221, 0.45);
+  --border: rgba(212, 160, 23, 0.18);
+  --border-hi: rgba(212, 160, 23, 0.55);
+  --glass: rgba(13, 7, 32, 0.75);
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-barlow), "Barlow Condensed", sans-serif;
+  background: var(--void);
+  color: var(--ash);
+  overflow-x: hidden;
+  cursor: none;
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+}
+::-webkit-scrollbar-track {
+  background: var(--void);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ember);
+  border-radius: 2px;
+}
+
+/* ============================================================
+   CUSTOM CURSOR — CRYSTAL MAGIC STYLE
+   ============================================================ */
+
+/* Hide default cursor */
+* {
+  cursor: none !important;
+}
+
+/* Crystal cursor container */
+#custom-cursor {
+  position: fixed;
+  width: 96px;
+  height: 96px;
+  pointer-events: none;
+  z-index: 999999;
+  transform: translate(-50%, -50%);
+  will-change: left, top;
+}
+
+/* Gem container */
+.gem-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Crystal gem SVG */
+.gem {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 20px #67e8f9) drop-shadow(0 0 45px #22d3ee);
+  animation: gemPulse 2.2s ease-in-out infinite;
+}
+
+/* Aura 1 (external, slower and larger) */
+.aura1 {
+  position: absolute;
+  top: -55%;
+  left: -55%;
+  width: 210%;
+  height: 210%;
+  background: radial-gradient(circle, rgba(103,232,249,0.45) 10%, rgba(34,211,238,0.18) 50%, transparent 75%);
+  border-radius: 50%;
+  filter: blur(28px);
+  z-index: -1;
+  animation: auraBreath 4.8s ease-in-out infinite alternate,
+             auraRotate 24s linear infinite;
+}
+
+/* Aura 2 (internal, more intense and faster) */
+.aura2 {
+  position: absolute;
+  top: -40%;
+  left: -40%;
+  width: 180%;
+  height: 180%;
+  background: radial-gradient(circle, rgba(165,243,252,0.65) 5%, transparent 60%);
+  border-radius: 50%;
+  filter: blur(18px);
+  z-index: -2;
+  animation: auraBreath 2.9s ease-in-out infinite alternate reverse,
+             auraRotate 15s linear infinite reverse;
+}
+
+/* Crystal pulse animation */
+@keyframes gemPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.07); }
+}
+
+/* Aura breathing animation */
+@keyframes auraBreath {
+  from { transform: scale(0.88); }
+  to { transform: scale(1.18); }
+}
+
+/* Aura rotation animation */
+@keyframes auraRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================================
+   BACKGROUND CANVAS
+   ============================================================ */
+#veyrath-bg-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+.veyrath-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 500;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  background: rgba(4, 2, 12, 0);
+  transition: background 0.4s, backdrop-filter 0.4s, border-color 0.4s;
+  border-bottom: 1px solid transparent;
+}
+
+.veyrath-nav.scrolled {
+  background: rgba(4, 2, 12, 0.92);
+  backdrop-filter: blur(20px);
+  border-color: var(--border);
+}
+
+.veyrath-logo {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 6px;
+  color: var(--gold-hi);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.veyrath-logo-mark {
+  width: 28px;
+  height: 28px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.veyrath-logo-mark::before,
+.veyrath-logo-mark::after {
+  content: "";
+  position: absolute;
+  border: 1.5px solid var(--gold);
+}
+
+.veyrath-logo-mark::before {
+  width: 20px;
+  height: 20px;
+  transform: rotate(45deg);
+}
+
+.veyrath-logo-mark::after {
+  width: 10px;
+  height: 10px;
+  transform: rotate(45deg);
+  background: var(--gold);
+  opacity: 0.5;
+}
+
+.veyrath-nav-menu {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+}
+
+.veyrath-nav-menu a {
+  text-decoration: none;
+  font-size: 0.72rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  transition: color 0.2s;
+  position: relative;
+  padding-bottom: 4px;
+}
+
+.veyrath-nav-menu a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width 0.3s;
+}
+
+.veyrath-nav-menu a:hover {
+  color: var(--gold);
+}
+
+.veyrath-nav-menu a:hover::after {
+  width: 100%;
+}
+
+.veyrath-nav-ctas {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.btn-ghost {
+  padding: 8px 20px;
+  background: transparent;
+  border: 1px solid rgba(154, 111, 245, 0.5);
+  border-radius: 2px;
+  color: var(--rune);
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: none;
+  transition: all 0.25s;
+}
+
+.btn-ghost:hover {
+  background: rgba(154, 111, 245, 0.15);
+  border-color: var(--rune);
+}
+
+.btn-gold {
+  padding: 8px 22px;
+  background: linear-gradient(135deg, var(--gold), var(--ember));
+  border: none;
+  border-radius: 2px;
+  color: #000;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: none;
+  transition: all 0.25s;
+  box-shadow: 0 0 20px rgba(212, 160, 23, 0.3);
+}
+
+.btn-gold:hover {
+  box-shadow: 0 0 40px rgba(212, 160, 23, 0.6);
+  transform: translateY(-1px);
+}
+
+/* ============================================================
+   HERO SECTION
+   ============================================================ */
+.veyrath-hero {
+  position: relative;
+  height: 100vh;
+  min-height: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero-atm {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+      ellipse 90% 70% at 50% 20%,
+      rgba(90, 30, 160, 0.28) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 50% 50% at 80% 70%,
+      rgba(184, 134, 11, 0.1) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 40% 40% at 20% 60%,
+      rgba(154, 111, 245, 0.08) 0%,
+      transparent 60%
+    ),
+    linear-gradient(180deg, var(--ink) 0%, var(--abyss) 50%, var(--void) 100%);
+}
+
+.hero-atm::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.08) 2px,
+    rgba(0, 0, 0, 0.08) 4px
+  );
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+      rgba(212, 160, 23, 0.04) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(212, 160, 23, 0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(
+    ellipse 80% 80% at 50% 50%,
+    black 40%,
+    transparent 100%
+  );
+}
+
+.hero-vig {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 100% 100% at 50% 50%,
+    transparent 30%,
+    rgba(4, 2, 12, 0.8) 100%
+  );
+}
+
+.rune-float {
+  position: absolute;
+  font-size: 1.2rem;
+  color: var(--rune);
+  opacity: 0;
+  animation: runeFloat 12s infinite ease-in-out;
+  user-select: none;
+  pointer-events: none;
+  text-shadow: 0 0 20px var(--rune);
+}
+
+@keyframes runeFloat {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+  }
+  15% {
+    opacity: 0.35;
+  }
+  80% {
+    opacity: 0.15;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-80px) scale(1.1);
+  }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 0.65rem;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.3s forwards;
+}
+
+.eline {
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold));
+}
+
+.eline.r {
+  background: linear-gradient(to left, transparent, var(--gold));
+}
+
+.hero-title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(5rem, 14vw, 13rem);
+  line-height: 0.9;
+  letter-spacing: 8px;
+  background: linear-gradient(
+    160deg,
+    #fff8e7 0%,
+    var(--gold-hi) 25%,
+    var(--gold) 50%,
+    var(--ember) 75%,
+    #6b4200 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 60px rgba(212, 160, 23, 0.4));
+  opacity: 0;
+  animation: fadeUp 0.9s 0.5s forwards;
+  position: relative;
+}
+
+.hero-title::after {
+  content: "VEYRATH";
+  position: absolute;
+  inset: 0;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: inherit;
+  letter-spacing: inherit;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px rgba(212, 160, 23, 0.15);
+  filter: blur(8px);
+  z-index: -1;
+}
+
+.hero-tagline {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  font-style: italic;
+  font-weight: 300;
+  color: rgba(200, 187, 221, 0.6);
+  letter-spacing: 4px;
+  margin-top: 14px;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.7s forwards;
+}
+
+.hero-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  justify-content: center;
+  margin: 28px auto;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.85s forwards;
+}
+
+.hero-divider span {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border-hi));
+}
+
+.hero-divider span:last-child {
+  background: linear-gradient(to left, transparent, var(--border-hi));
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  opacity: 0;
+  animation: fadeUp 0.8s 1s forwards;
+}
+
+.cta-main {
+  padding: 16px 40px;
+  background: linear-gradient(135deg, var(--gold), var(--ember));
+  border: none;
+  border-radius: 2px;
+  color: #000;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  cursor: none;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+  box-shadow: 0 4px 40px rgba(212, 160, 23, 0.4);
+}
+
+.cta-main::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.25),
+    transparent
+  );
+  transform: translateX(-100%);
+  transition: transform 0.5s;
+}
+
+.cta-main:hover::before {
+  transform: translateX(100%);
+}
+
+.cta-main:hover {
+  box-shadow: 0 4px 60px rgba(212, 160, 23, 0.7);
+  transform: translateY(-2px);
+}
+
+.cta-outline {
+  padding: 16px 36px;
+  background: transparent;
+  border: 1px solid rgba(200, 187, 221, 0.25);
+  border-radius: 2px;
+  color: var(--ash);
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  cursor: none;
+  transition: all 0.3s;
+}
+
+.cta-outline:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(212, 160, 23, 0.07);
+}
+
+.hero-badges {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  margin-top: 32px;
+  opacity: 0;
+  animation: fadeUp 0.8s 1.1s forwards;
+}
+
+.hero-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.65rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.badge-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--gold);
+  opacity: 0.7;
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  animation: fadeUp 0.8s 1.4s forwards;
+}
+
+.scroll-text {
+  font-size: 0.58rem;
+  letter-spacing: 5px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+
+.scroll-track {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  position: relative;
+  overflow: hidden;
+}
+
+.scroll-track::after {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: 0;
+  width: 1px;
+  height: 20px;
+  background: var(--gold-hi);
+  animation: scrollDrop 2s infinite ease-in-out;
+}
+
+@keyframes scrollDrop {
+  0% {
+    top: -20px;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    top: 80px;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================================
+   SECTION COMMONS
+   ============================================================ */
+.section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+.s-label {
+  font-size: 0.6rem;
+  letter-spacing: 7px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.s-label::before {
+  content: "";
+  width: 24px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold));
+}
+
+.s-title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  letter-spacing: 4px;
+  line-height: 1;
+  color: var(--ash);
+}
+
+.s-title em {
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px var(--gold);
+  font-style: normal;
+}
+
+.gold-text {
+  background: linear-gradient(135deg, var(--gold-hi), var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================================
+   REVEAL ANIMATIONS
+   ============================================================ */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+[data-reveal].in {
+  opacity: 1;
+  transform: none;
+}
+
+[data-reveal-left] {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+[data-reveal-left].in {
+  opacity: 1;
+  transform: none;
+}
+
+[data-reveal-right] {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+[data-reveal-right].in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ============================================================
+   LORE SECTION
+   ============================================================ */
+.veyrath-lore {
+  padding: 140px 0;
+  background: var(--ink);
+  position: relative;
+  overflow: hidden;
+}
+
+.veyrath-lore::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, var(--void), transparent);
+}
+
+.lore-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.lore-text p {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.1rem;
+  line-height: 1.9;
+  color: rgba(200, 187, 221, 0.65);
+  margin-top: 24px;
+}
+
+.lore-text p strong {
+  color: var(--gold-hi);
+  font-weight: 600;
+}
+
+.lore-visual {
+  position: relative;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lore-hex-outer {
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--border);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  animation: rotateSlow 20s linear infinite;
+}
+
+.lore-hex-inner {
+  position: absolute;
+  inset: 20%;
+  border: 1px solid var(--rune-dim);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  animation: rotateSlow 12s linear infinite reverse;
+}
+
+.lore-center {
+  font-size: 5rem;
+  filter: drop-shadow(0 0 30px rgba(154, 111, 245, 0.5));
+  animation: pulseGlow 3s ease-in-out infinite;
+  z-index: 1;
+}
+
+@keyframes rotateSlow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 20px rgba(154, 111, 245, 0.4));
+  }
+  50% {
+    filter: drop-shadow(0 0 50px rgba(154, 111, 245, 0.8));
+  }
+}
+
+.lore-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.lore-stat {
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: rgba(13, 7, 32, 0.5);
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.lore-stat:hover {
+  border-color: var(--border-hi);
+  background: rgba(212, 160, 23, 0.05);
+}
+
+.lore-stat-num {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 2.2rem;
+  letter-spacing: 2px;
+  background: linear-gradient(135deg, var(--gold-hi), var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.lore-stat-label {
+  font-size: 0.65rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-top: 4px;
+}
+
+/* ============================================================
+   REALMS SECTION
+   ============================================================ */
+.veyrath-realms {
+  padding: 140px 0;
+  background: linear-gradient(180deg, var(--ink), var(--abyss));
+  position: relative;
+}
+
+.realms-intro {
+  text-align: center;
+  margin-bottom: 72px;
+}
+
+.realms-scroll-track {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  padding: 0 48px 24px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.realm-card {
+  flex: 0 0 260px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--glass);
+  cursor: none;
+  transition: all 0.4s;
+  backdrop-filter: blur(10px);
+}
+
+.realm-card:hover {
+  border-color: var(--border-hi);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 24px 80px rgba(212, 160, 23, 0.15),
+    0 0 0 1px rgba(212, 160, 23, 0.1);
+}
+
+.realm-card-art {
+  height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 6rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.realm-card-art::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.6;
+}
+
+.r-art-1::before {
+  background: radial-gradient(
+    ellipse at 50% 80%,
+    rgba(100, 180, 255, 0.3),
+    transparent
+  );
+}
+
+.r-art-2::before {
+  background: radial-gradient(
+    ellipse at 50% 80%,
+    rgba(60, 0, 60, 0.6),
+    transparent
+  );
+}
+
+.r-art-3::before {
+  background: radial-gradient(
+    ellipse at 50% 80%,
+    rgba(100, 100, 100, 0.4),
+    transparent
+  );
+}
+
+.r-art-4::before {
+  background: radial-gradient(
+    ellipse at 50% 80%,
+    rgba(200, 80, 0, 0.4),
+    transparent
+  );
+}
+
+.r-art-5::before {
+  background: radial-gradient(
+    ellipse at 50% 80%,
+    rgba(80, 0, 120, 0.5),
+    transparent
+  );
+}
+
+.realm-card-art::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(to top, var(--glass), transparent);
+}
+
+.realm-card-body {
+  padding: 20px 22px 24px;
+}
+
+.realm-id {
+  font-size: 0.58rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+
+.realm-name {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 3px;
+  color: var(--ash);
+  margin-bottom: 10px;
+}
+
+.realm-desc {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+
+.realm-badge {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 4px 10px;
+  font-size: 0.58rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  color: var(--gold);
+}
+
+/* ============================================================
+   CLASSES SECTION
+   ============================================================ */
+.veyrath-classes {
+  padding: 140px 0;
+  background: var(--void);
+  position: relative;
+  overflow: hidden;
+}
+
+.classes-bg-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(
+    circle,
+    rgba(90, 30, 160, 0.12),
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.classes-intro {
+  text-align: center;
+  margin-bottom: 72px;
+}
+
+.classes-selector {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 64px;
+  position: relative;
+  z-index: 1;
+}
+
+.class-tab {
+  padding: 12px 36px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  cursor: none;
+  transition: all 0.25s;
+  position: relative;
+}
+
+.class-tab:not(:first-child) {
+  border-left: none;
+}
+
+.class-tab:first-child {
+  border-radius: 3px 0 0 3px;
+}
+
+.class-tab:last-child {
+  border-radius: 0 3px 3px 0;
+}
+
+.class-tab.active {
+  background: linear-gradient(
+    135deg,
+    rgba(212, 160, 23, 0.2),
+    rgba(184, 134, 11, 0.1)
+  );
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.class-tab:hover:not(.active) {
+  color: var(--ash);
+  border-color: rgba(200, 187, 221, 0.3);
+}
+
+.classes-stage {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  gap: 0;
+  align-items: end;
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.classes-stage::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--border-hi),
+    transparent
+  );
+}
+
+.class-panel {
+  padding: 0 32px 40px;
+  opacity: 0.5;
+  filter: saturate(0.4);
+  transition: all 0.4s;
+  text-align: center;
+  cursor: none;
+}
+
+.class-panel:hover,
+.class-panel.featured {
+  opacity: 1;
+  filter: saturate(1);
+}
+
+.class-panel.featured {
+  padding-bottom: 60px;
+}
+
+.class-figure {
+  height: 420px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px 8px 0 0;
+}
+
+.class-figure img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 8px 8px 0 0;
+  transition: transform 0.4s ease;
+}
+
+.class-panel:hover .class-figure img,
+.class-panel.featured .class-figure img {
+  transform: scale(1.04);
+}
+
+.class-figure::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.class-panel.featured .class-figure::after,
+.class-panel:hover .class-figure::after {
+  opacity: 1;
+}
+
+.class-aura {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.class-panel.featured .class-aura,
+.class-panel:hover .class-aura {
+  opacity: 1;
+}
+
+.aura-p {
+  background: radial-gradient(
+    circle,
+    rgba(100, 180, 255, 0.2),
+    transparent 70%
+  );
+}
+
+.aura-a {
+  background: radial-gradient(circle, rgba(60, 0, 60, 0.5), transparent 70%);
+}
+
+.aura-t {
+  background: radial-gradient(
+    circle,
+    rgba(154, 111, 245, 0.3),
+    transparent 70%
+  );
+}
+
+.class-icon-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 60px;
+  background: rgba(212, 160, 23, 0.1);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 14px;
+  overflow: hidden;
+}
+
+.class-icon-badge img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.class-name-big {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 2rem;
+  letter-spacing: 5px;
+  color: var(--ash);
+  margin-bottom: 10px;
+}
+
+.class-desc-text {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+  max-width: 260px;
+  margin: 0 auto 20px;
+}
+
+.class-traits {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.trait {
+  padding: 4px 12px;
+  font-size: 0.6rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  color: var(--text-dim);
+  transition: all 0.3s;
+}
+
+.class-panel.featured .trait,
+.class-panel:hover .trait {
+  border-color: rgba(212, 160, 23, 0.35);
+  color: var(--gold-hi);
+}
+
+/* ============================================================
+   SYSTEMS SECTION
+   ============================================================ */
+.veyrath-sistemas {
+  padding: 140px 0;
+  background: linear-gradient(180deg, var(--void), var(--ink));
+  position: relative;
+}
+
+.sistemas-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+  align-items: start;
+}
+
+.sistemas-sticky {
+  position: sticky;
+  top: 120px;
+}
+
+.sistemas-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.sistema-item {
+  padding: 28px 0;
+  border-bottom: 1px solid var(--border);
+  cursor: none;
+  transition: all 0.3s;
+  position: relative;
+}
+
+.sistema-item::before {
+  content: "";
+  position: absolute;
+  left: -24px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2px;
+  height: 0;
+  background: var(--gold);
+  transition: height 0.3s;
+}
+
+.sistema-item:hover::before,
+.sistema-item.active::before {
+  height: 60%;
+}
+
+.sistema-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 0;
+  transition: margin 0.3s;
+}
+
+.sistema-item.active .sistema-header,
+.sistema-item:hover .sistema-header {
+  margin-bottom: 14px;
+}
+
+.sistema-icon {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  background: rgba(212, 160, 23, 0.08);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+
+.sistema-item:hover .sistema-icon,
+.sistema-item.active .sistema-icon {
+  background: rgba(212, 160, 23, 0.15);
+  border-color: var(--gold);
+  box-shadow: 0 0 16px rgba(212, 160, 23, 0.2);
+}
+
+.sistema-cat {
+  font-size: 0.58rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 2px;
+}
+
+.sistema-name-h {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 3px;
+  color: var(--ash);
+}
+
+.sistema-body {
+  max-height: 0;
+  overflow: hidden;
+  font-size: 0.88rem;
+  color: var(--text-dim);
+  line-height: 1.75;
+  transition: max-height 0.4s ease, opacity 0.4s;
+  opacity: 0;
+  padding-left: 56px;
+}
+
+.sistema-item.active .sistema-body,
+.sistema-item:hover .sistema-body {
+  max-height: 200px;
+  opacity: 1;
+}
+
+.sistemas-visual {
+  aspect-ratio: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.vis-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  animation: rotateSlow 15s linear infinite;
+}
+
+.vis-ring:nth-child(1) {
+  width: 80%;
+  height: 80%;
+  animation-duration: 20s;
+}
+
+.vis-ring:nth-child(2) {
+  width: 60%;
+  height: 60%;
+  animation-duration: 14s;
+  animation-direction: reverse;
+  border-style: dashed;
+}
+
+.vis-ring:nth-child(3) {
+  width: 40%;
+  height: 40%;
+  animation-duration: 10s;
+  border-color: var(--rune-dim);
+}
+
+.vis-core {
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(
+    circle,
+    rgba(154, 111, 245, 0.3),
+    rgba(212, 160, 23, 0.1),
+    transparent
+  );
+  border-radius: 50%;
+  border: 1px solid rgba(212, 160, 23, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  z-index: 1;
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+.vis-orbit-dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: var(--gold);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--gold-glow);
+  top: 10%;
+  left: 50%;
+  animation: orbitDot 8s linear infinite;
+  transform-origin: 0 200px;
+}
+
+@keyframes orbitDot {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================================
+   PRE-ORDER SECTION
+   ============================================================ */
+.veyrath-preorder {
+  padding: 140px 0;
+  background: var(--abyss);
+  position: relative;
+  overflow: hidden;
+}
+
+.veyrath-preorder::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+      ellipse 80% 60% at 50% 0%,
+      rgba(90, 30, 160, 0.2),
+      transparent
+    ),
+    radial-gradient(
+      ellipse 50% 50% at 0% 100%,
+      rgba(212, 160, 23, 0.08),
+      transparent
+    );
+}
+
+.preorder-intro {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.preorder-intro p {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.15rem;
+  color: rgba(200, 187, 221, 0.55);
+  max-width: 540px;
+  margin: 16px auto 0;
+  line-height: 1.8;
+}
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin: 0 auto 72px;
+}
+
+.cd-unit {
+  text-align: center;
+}
+
+.cd-num {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 3.5rem;
+  line-height: 1;
+  color: var(--gold-hi);
+  background: rgba(212, 160, 23, 0.06);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  width: 90px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 2px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.cd-num.tick {
+  animation: tickAnim 0.1s ease;
+}
+
+@keyframes tickAnim {
+  0% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.cd-label {
+  font-size: 0.58rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-top: 8px;
+}
+
+.cd-sep {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 3rem;
+  color: var(--border-hi);
+  padding-bottom: 20px;
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.packages {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr 1fr;
+  gap: 20px;
+  max-width: 1080px;
+  margin: 0 auto 80px;
+}
+
+.pkg {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.35s;
+}
+
+.pkg:hover {
+  border-color: var(--border-hi);
+  transform: translateY(-4px);
+}
+
+.pkg.star {
+  border-color: var(--gold);
+  background: linear-gradient(
+    180deg,
+    rgba(45, 20, 88, 0.7),
+    rgba(13, 7, 32, 0.9)
+  );
+  box-shadow: 0 0 80px rgba(212, 160, 23, 0.12),
+    0 0 0 1px rgba(212, 160, 23, 0.08) inset;
+}
+
+.pkg-top-bar {
+  height: 3px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--border-hi),
+    transparent
+  );
+}
+
+.pkg.star .pkg-top-bar {
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+
+.pkg-label {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  padding: 4px 12px;
+  background: var(--gold);
+  color: #000;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  border-radius: 20px;
+}
+
+.pkg-art {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 7rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.pkg-art::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to top, var(--glass), transparent);
+}
+
+.pkg-body {
+  padding: 24px 28px 32px;
+}
+
+.pkg-tier {
+  font-size: 0.58rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+
+.pkg-name {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.6rem;
+  letter-spacing: 3px;
+  color: var(--ash);
+  margin-bottom: 20px;
+}
+
+.pkg-price {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 3rem;
+  letter-spacing: 2px;
+  background: linear-gradient(135deg, var(--gold-hi), var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 24px;
+}
+
+.pkg-feats {
+  list-style: none;
+  margin-bottom: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pkg-feats li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.82rem;
+  color: rgba(200, 187, 221, 0.7);
+  line-height: 1.5;
+}
+
+.feat-check {
+  color: var(--gold);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.feat-main {
+  color: var(--ash);
+  font-weight: 600;
+  display: block;
+}
+
+.feat-sub {
+  color: var(--text-dim);
+  font-size: 0.75rem;
+}
+
+.btn-pkg-outline {
+  width: 100%;
+  padding: 13px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  color: var(--ash);
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: none;
+  transition: all 0.3s;
+}
+
+.btn-pkg-outline:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.btn-pkg-fill {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, var(--rune), var(--rune-dim));
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: none;
+  transition: all 0.3s;
+  box-shadow: 0 4px 30px rgba(154, 111, 245, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-pkg-fill::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+  transform: translateX(-100%);
+  transition: transform 0.5s;
+}
+
+.btn-pkg-fill:hover::before {
+  transform: translateX(100%);
+}
+
+.btn-pkg-fill:hover {
+  box-shadow: 0 4px 50px rgba(154, 111, 245, 0.5);
+  transform: translateY(-2px);
+}
+
+.legacy-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  max-width: 1080px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.legacy-title-h {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.8rem;
+  letter-spacing: 4px;
+  color: var(--gold);
+}
+
+.legacy-sub-h {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  margin-top: 2px;
+}
+
+.view-all-link {
+  font-size: 0.65rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: opacity 0.2s;
+}
+
+.view-all-link:hover {
+  opacity: 0.6;
+}
+
+.rewards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.reward {
+  padding: 22px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.reward:hover {
+  border-color: var(--border-hi);
+  background: rgba(212, 160, 23, 0.04);
+  transform: translateY(-3px);
+}
+
+.reward-icon {
+  width: 48px;
+  height: 48px;
+  background: rgba(212, 160, 23, 0.08);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  margin: 0 auto 12px;
+}
+
+.reward-name {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--ash);
+  margin-bottom: 3px;
+}
+
+.reward-type {
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  color: var(--text-dim);
+}
+
+/* ============================================================
+   CTA FINAL SECTION
+   ============================================================ */
+.veyrath-cta-final {
+  padding: 160px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: var(--ink);
+}
+
+.cta-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+      ellipse 70% 70% at 50% 50%,
+      rgba(154, 111, 245, 0.15),
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 40% 40% at 30% 80%,
+      rgba(212, 160, 23, 0.08),
+      transparent
+    );
+}
+
+.cta-final-title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  letter-spacing: 6px;
+  background: linear-gradient(135deg, var(--gold-hi), var(--gold), var(--ember));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 12px;
+}
+
+.cta-final-sub {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: rgba(200, 187, 221, 0.5);
+  max-width: 520px;
+  margin: 0 auto 40px;
+  line-height: 1.8;
+}
+
+/* ============================================================
+   PARTNERS SECTION
+   ============================================================ */
+.veyrath-partners {
+  padding: 80px 0;
+  background: var(--void);
+  border-top: 1px solid var(--border);
+}
+
+.partners-label {
+  font-size: 0.6rem;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.partner-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.partner-chip {
+  padding: 8px 22px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 3px;
+  font-size: 0.78rem;
+  letter-spacing: 2px;
+  color: rgba(200, 187, 221, 0.35);
+  transition: all 0.25s;
+}
+
+.partner-chip:hover {
+  color: rgba(200, 187, 221, 0.7);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.streamers {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.streamer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  transition: all 0.25s;
+  min-width: 220px;
+}
+
+.streamer:hover {
+  border-color: var(--border-hi);
+}
+
+.streamer-av {
+  width: 38px;
+  height: 38px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, var(--rune-dim), var(--ink));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.streamer-name-t {
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: var(--ash);
+}
+
+.streamer-plat {
+  font-size: 0.6rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.twitch-badge {
+  color: #9146ff;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.veyrath-footer {
+  padding: 32px 48px;
+  background: var(--ink);
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.footer-logo {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 5px;
+  color: var(--gold);
+}
+
+.footer-copy {
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  color: var(--text-dim);
+}
+
+.footer-socials {
+  display: flex;
+  gap: 10px;
+}
+
+.soc-btn {
+  width: 34px;
+  height: 34px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  cursor: none;
+  transition: all 0.2s;
+  text-decoration: none;
+  color: var(--text-dim);
+}
+
+.soc-btn:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.footer-lang {
+  font-size: 0.65rem;
+  letter-spacing: 3px;
+  color: var(--text-dim);
+  cursor: none;
+}
+
+.footer-lang span {
+  color: var(--gold);
+  text-decoration: underline;
+  cursor: none;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1024px) {
+  .lore-grid,
+  .sistemas-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .packages {
+    grid-template-columns: 1fr;
+    max-width: 440px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .pkg.star {
+    order: -1;
+  }
+
+  .classes-stage {
+    grid-template-columns: 1fr;
+  }
+
+  .rewards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .veyrath-nav {
+    padding: 0 24px;
+  }
+
+  .veyrath-nav-menu {
+    display: none;
+  }
+
+  .section-inner {
+    padding: 0 24px;
+  }
+
+  .hero-ctas {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .lore-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .veyrath-footer {
+    flex-direction: column;
+    text-align: center;
+    padding: 24px;
+  }
+}
+* {
+  cursor: none !important;
+}
+
+#custom-cursor {
+  position: fixed;
+  width: 96px;
+  height: 96px;
+  pointer-events: none;
+  z-index: 999999;
+  transform: translate(-50%, -50%);
+}
+
+.gem-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.gem {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 20px #67e8f9) drop-shadow(0 0 45px #22d3ee);
+  animation: gemPulse 2.2s ease-in-out infinite;
+}
+
+.aura1 {
+  position: absolute;
+  top: -55%;
+  left: -55%;
+  width: 210%;
+  height: 210%;
+  background: radial-gradient(circle, rgba(103,232,249,0.45) 10%, rgba(34,211,238,0.18) 50%, transparent 75%);
+  border-radius: 50%;
+  filter: blur(28px);
+  z-index: -1;
+  animation: auraBreath 4.8s ease-in-out infinite alternate,
+             auraRotate 24s linear infinite;
+}
+
+.aura2 {
+  position: absolute;
+  top: -40%;
+  left: -40%;
+  width: 180%;
+  height: 180%;
+  background: radial-gradient(circle, rgba(165,243,252,0.65) 5%, transparent 60%);
+  border-radius: 50%;
+  filter: blur(18px);
+  z-index: -2;
+  animation: auraBreath 2.9s ease-in-out infinite alternate reverse,
+             auraRotate 15s linear infinite reverse;
+}
+
+@keyframes gemPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.07); }
+}
+
+@keyframes auraBreath {
+  from { transform: scale(0.88); }
+  to { transform: scale(1.18); }
+}
+
+@keyframes auraRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
