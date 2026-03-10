@@ -128,7 +128,7 @@ export const realms = {
       description:
         "Uma selva vertical de árvores titânicas e cachoeiras colossais, pulsando com uma vida selvagem, úmida e ancestral.",
       badge: "Florestas",
-      image: "/Sylphae.png",
+      image: "/Sylphae.jpg",
     },
     {
       id: "Reino III",
