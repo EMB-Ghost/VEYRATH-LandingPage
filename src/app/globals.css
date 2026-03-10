@@ -801,6 +801,18 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.lore-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 12px;
 }
 
 .lore-hex-outer {
@@ -931,6 +943,15 @@ body {
   font-size: 6rem;
   position: relative;
   overflow: hidden;
+}
+
+.realm-card-art img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .realm-card-art::before {
