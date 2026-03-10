@@ -58,6 +58,16 @@ export default function Home() {
         <div className="hero-grid" />
         <div className="hero-vig" />
 
+        {/* Video background */}
+        <video
+          className="hero-video"
+          src="/trailer.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
+
         {/* Floating runes */}
         {hero.runes.map((rune, i) => {
           const positions = [
