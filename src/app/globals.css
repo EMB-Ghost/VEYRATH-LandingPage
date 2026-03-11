@@ -66,11 +66,11 @@ body {
 /* Crystal cursor container */
 #custom-cursor {
   position: fixed;
-  width: 48px;
-  height: 48px;
+  width: 32px;
+  height: 32px;
   pointer-events: none;
   z-index: 999999;
-  transform: translate(-50%, -50%);
+  transform: translate(-8%, -8%);
   will-change: left, top;
 }
 
@@ -86,7 +86,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 0 20px #67e8f9) drop-shadow(0 0 45px #22d3ee);
+  filter: drop-shadow(0 0 8px #233398) drop-shadow(0 0 18px #233398);
   animation: gemPulse 2.2s ease-in-out infinite;
 }
 
@@ -97,9 +97,9 @@ body {
   left: -55%;
   width: 210%;
   height: 210%;
-  background: radial-gradient(circle, rgba(103,232,249,0.45) 10%, rgba(34,211,238,0.18) 50%, transparent 75%);
+  background: radial-gradient(circle, rgba(35,51,152,0.35) 10%, rgba(35,51,152,0.12) 50%, transparent 75%);
   border-radius: 50%;
-  filter: blur(28px);
+  filter: blur(18px);
   z-index: -1;
   animation: auraBreath 4.8s ease-in-out infinite alternate,
              auraRotate 24s linear infinite;
@@ -112,9 +112,9 @@ body {
   left: -40%;
   width: 180%;
   height: 180%;
-  background: radial-gradient(circle, rgba(165,243,252,0.65) 5%, transparent 60%);
+  background: radial-gradient(circle, rgba(35,51,152,0.5) 5%, transparent 60%);
   border-radius: 50%;
-  filter: blur(18px);
+  filter: blur(10px);
   z-index: -2;
   animation: auraBreath 2.9s ease-in-out infinite alternate reverse,
              auraRotate 15s linear infinite reverse;
@@ -914,6 +914,7 @@ body {
   padding: 0 48px 24px;
   scrollbar-width: thin;
   scrollbar-color: var(--border) transparent;
+  justify-content: center;
 }
 
 .realm-card {
@@ -2194,11 +2195,11 @@ body {
 
 #custom-cursor {
   position: fixed;
-  width: 96px;
-  height: 96px;
+  width: 32px;
+  height: 32px;
   pointer-events: none;
   z-index: 999999;
-  transform: translate(-50%, -50%);
+  transform: translate(-8%, -8%);
 }
 
 .gem-container {
@@ -2211,7 +2212,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 0 20px #67e8f9) drop-shadow(0 0 45px #22d3ee);
+  filter: drop-shadow(0 0 8px #233398) drop-shadow(0 0 18px #233398);
   animation: gemPulse 2.2s ease-in-out infinite;
 }
 
@@ -2221,9 +2222,9 @@ body {
   left: -55%;
   width: 210%;
   height: 210%;
-  background: radial-gradient(circle, rgba(103,232,249,0.45) 10%, rgba(34,211,238,0.18) 50%, transparent 75%);
+  background: radial-gradient(circle, rgba(35,51,152,0.35) 10%, rgba(35,51,152,0.12) 50%, transparent 75%);
   border-radius: 50%;
-  filter: blur(28px);
+  filter: blur(18px);
   z-index: -1;
   animation: auraBreath 4.8s ease-in-out infinite alternate,
              auraRotate 24s linear infinite;
@@ -2235,9 +2236,9 @@ body {
   left: -40%;
   width: 180%;
   height: 180%;
-  background: radial-gradient(circle, rgba(165,243,252,0.65) 5%, transparent 60%);
+  background: radial-gradient(circle, rgba(35,51,152,0.5) 5%, transparent 60%);
   border-radius: 50%;
-  filter: blur(18px);
+  filter: blur(10px);
   z-index: -2;
   animation: auraBreath 2.9s ease-in-out infinite alternate reverse,
              auraRotate 15s linear infinite reverse;
