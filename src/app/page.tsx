@@ -246,11 +246,14 @@ export default function Home() {
                 {sistemas.intro}
               </p>
               <div className="sistemas-visual" style={{ marginTop: "48px" }}>
-                <div className="vis-ring" />
-                <div className="vis-ring" />
-                <div className="vis-ring" />
-                <div className="vis-orbit-dot" />
-                <div className="vis-core">⚙️</div>
+                <video
+                  className="sistemas-video"
+                  src="/sistemas-video.mp4"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                />
               </div>
             </div>
 
