@@ -1712,6 +1712,15 @@ body {
   overflow: hidden;
 }
 
+.pkg-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  position: absolute;
+  inset: 0;
+}
+
 .pkg-art::after {
   content: "";
   position: absolute;
