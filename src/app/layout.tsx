@@ -3,6 +3,7 @@ import { Bebas_Neue, Barlow_Condensed, Cormorant_Garamond } from "next/font/goog
 import "./globals.css";
 import { siteMetadata } from "@/data/site";
 import CustomCursor from '@/components/CustomCursor';
+import { Analytics } from '@vercel/analytics/next';
 
 const bebasNeue = Bebas_Neue({
   weight: "400",
@@ -56,6 +57,7 @@ export default function RootLayout({
       <body>
         {children}
         <CustomCursor />
+        <Analytics />
       </body>
     </html>
   );
