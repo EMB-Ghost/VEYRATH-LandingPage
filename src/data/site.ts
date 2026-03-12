@@ -307,7 +307,7 @@ export const preorder = {
       id: "sentinela",
       featured: false,
       emoji: "",
-      image: "/Soberano.png",
+      image: "/Sentinela.png",
       tier: "Vanguarda do Reino",
       name: "Pack Sentinela",
       price: "R$69,99",
