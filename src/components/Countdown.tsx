@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 
 interface TimeLeft {
   d: string;
@@ -9,45 +9,16 @@ interface TimeLeft {
   s: string;
 }
 
-interface CountdownDuration {
-  days: number;
-  hours: number;
-  minutes: number;
-  seconds: number;
-}
+// Data alvo: 31 de maio de 2027 à meia-noite
+const LAUNCH_DATE = new Date("2027-05-31T00:00:00");
 
-interface CountdownProps {
-  duration: CountdownDuration;
-}
-
-export default function Countdown({ duration }: CountdownProps) {
-  const durationMs =
-    (duration.days * 86400 +
-      duration.hours * 3600 +
-      duration.minutes * 60 +
-      duration.seconds) *
-    1000;
-
-  const targetRef = useRef<number>(0);
-  const [time, setTime] = useState<TimeLeft>({
-    d: String(duration.days).padStart(2, "0"),
-    h: String(duration.hours).padStart(2, "0"),
-    m: String(duration.minutes).padStart(2, "0"),
-    s: String(duration.seconds).padStart(2, "0"),
-  });
+export default function Countdown() {
+  const [time, setTime] = useState<TimeLeft>({ d: "00", h: "00", m: "00", s: "00" });
   const [ticking, setTicking] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
-    // Initialize target inside useEffect to avoid impure render
-    if (targetRef.current === 0) {
-      targetRef.current = Date.now() + durationMs;
-    }
-
     const tick = () => {
-      const diff = Math.max(
-        0,
-        Math.floor((targetRef.current - Date.now()) / 1000)
-      );
+      const diff = Math.max(0, Math.floor((LAUNCH_DATE.getTime() - Date.now()) / 1000));
       const d = Math.floor(diff / 86400);
       const h = Math.floor((diff % 86400) / 3600);
       const m = Math.floor((diff % 3600) / 60);
@@ -76,7 +47,7 @@ export default function Countdown({ duration }: CountdownProps) {
     tick();
     const id = setInterval(tick, 1000);
     return () => clearInterval(id);
-  }, [durationMs]);
+  }, []);
 
   const units: { key: keyof TimeLeft; label: string }[] = [
     { key: "d", label: "Dias" },
@@ -96,9 +67,7 @@ export default function Countdown({ duration }: CountdownProps) {
             <div className="cd-label">{unit.label}</div>
           </div>
           {i < units.length - 1 && (
-            <div key={`sep-${i}`} className="cd-sep">
-              :
-            </div>
+            <div key={`sep-${i}`} className="cd-sep">:</div>
           )}
         </>
       ))}
