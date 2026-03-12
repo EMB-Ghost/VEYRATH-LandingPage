@@ -18,7 +18,7 @@ export const siteMetadata = {
   keywords: [
     "MMORPG",
     "VEYRATH",
-    "Rise of Legends",
+    "Os Reinos Fraturados",
     "2027",
     "Steam",
     "RPG",
@@ -33,7 +33,7 @@ export const siteMetadata = {
     locale: "pt_BR",
   },
   twitter: {
-    title: "VEYRATH — Os Reinos Fraturados | MMORPG 2026",
+    title: "VEYRATH — Os Reinos Fraturados | MMORPG 2027",
     description:
       "Cinco reinos estilhaçados. Três classes. Escolhas permanentes. Sua lenda começa em 2026.",
   },
@@ -43,11 +43,11 @@ export const siteMetadata = {
 // LINKS EXTERNOS (Steam, Discord, redes sociais)
 // ─────────────────────────────────────────────────────────────
 export const links = {
-  steam: "https://store.steampowered.com/", // Substitua pelo link real da Wishlist
-  discord: "https://discord.gg/",           // Substitua pelo link real do Discord
-  twitter: "https://twitter.com/",          // Substitua pelo link real do Twitter/X
-  youtube: "https://youtube.com/",          // Substitua pelo link real do YouTube
-  twitch: "https://twitch.tv/",             // Substitua pelo link real da Twitch
+  steam: "https://steamcommunity.com/groups/EmbrasaGames",               // Substitua pelo link real da Wishlist
+  discord: "https://discord.gg/g567wFPy3s",                             // Substitua pelo link real do Discord
+  twitter: "https://x.com/VeyrathFracture",                            // Substitua pelo link real do Twitter/X
+  youtube: "https://youtube.com/@VEYRATHOSREINOSFRATURADOS",          // Substitua pelo link real do YouTube
+  twitch: "https://www.twitch.tv/veyrathfractured",                  // Substitua pelo link real da Twitch
 };
 
 // ─────────────────────────────────────────────────────────────
@@ -261,17 +261,18 @@ export const preorder = {
     {
       id: "peregrino",
       featured: false,
-      emoji: "⛺",
+      //emoji: "⛺",
+      image: "/peregrino.png",
       tier: "Acesso de Fundador",
       name: "Pack Peregrino",
-      price: "R$29,99",
+      price: "R$39,99",
       features: [
         { main: "Acesso Antecipado" },
         {
           main: 'Insígnia "O Despertar"',
           sub: "Ícone exclusivo de apoiador no perfil e chat.",
         },
-        { main: "300 Fragmentos de Éter", sub: "Moeda para cosméticos básicos." },
+        { main: "10 Fragmentos de Éter", sub: "Moeda para cosméticos básicos." },
       ],
       ctaLabel: "Selecionar Pack",
       ctaStyle: "outline",
@@ -280,21 +281,22 @@ export const preorder = {
       id: "soberano",
       featured: true,
       featuredLabel: "Mais Popular",
-      emoji: "⚔️",
+      //emoji: "⚔️",
+      image: "/soberano.png",
       tier: "Elite de Aurenthia",
       name: "Soberano Ancestral",
       price: "R$99,99",
       features: [
         {
-          main: "Visual de Arma: Relíquia Áurea",
-          sub: "Efeito visual de aura (estilo Dragon Ball) na arma.",
+          main: "Visual: Relíquia Áurea",
+          sub: "Efeito visual de aura (estilo Dragon Ball).",
         },
         {
           main: 'Título "Herdeiro do Planalto"',
           sub: "Flair dourado permanente acima do nome.",
         },
         {
-          main: "2.500 Fragmentos de Éter",
+          main: "50 Fragmentos de Éter",
           sub: "Moeda premium para a loja de skins.",
         },
       ],
@@ -304,17 +306,18 @@ export const preorder = {
     {
       id: "sentinela",
       featured: false,
-      emoji: "🛡️",
+      //emoji: "🛡️",
+      image: "/packages/sentinela.png",
       tier: "Vanguarda do Reino",
       name: "Pack Sentinela",
-      price: "R$59,99",
+      price: "R$69,99",
       features: [
         { main: "Acesso Antecipado + 48h de Head Start" },
         {
           main: "Manto do Explorador",
           sub: "Capa cosmética exclusiva com física avançada.",
         },
-        { main: "1.000 Fragmentos de Éter", sub: "Para itens de personalização." },
+        { main: "35 Fragmentos de Éter", sub: "Para itens de personalização." },
       ],
       ctaLabel: "Selecionar Pack",
       ctaStyle: "outline",
@@ -326,7 +329,7 @@ export const preorder = {
     viewAllLabel: "Ver Todos os Benefícios →",
     viewAllHref: "#",
     items: [
-      { icon: "✨", name: "Aura de Cursor", type: "Efeito Visual Customizado" },
+      { icon: "✨", name: "Aura do Fundador", type: "Efeito Visual Customizado" },
       { icon: "📜", name: "Reserva de Nome", type: "Prioridade de Personagem" },
       { icon: "🏅", name: "Título de Fundador", type: "Social Nameplate" },
       { icon: "🎨", name: "Skins Exclusivas", type: "Cosmético de Legado" },
@@ -341,7 +344,7 @@ export const ctaFinal = {
   label: "Sua Lenda Começa Agora",
   title: "SUA LENDA COMEÇA AGORA",
   subtitle:
-    "Prepare-se para o lançamento em 2026. Junte-se a milhares de heróis cujas histórias já estão sendo escritas — e nunca serão apagadas.",
+    "Prepare-se para o lançamento em 2027. Junte-se a milhares de heróis cujas histórias já estão sendo escritas — e nunca serão apagadas.",
   ctaLabel: "🛒 Wishlist Gratuita no Steam",
 };
 
