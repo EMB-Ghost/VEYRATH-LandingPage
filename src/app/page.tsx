@@ -294,7 +294,9 @@ export default function Home() {
               {pkg.featured && pkg.featuredLabel && (
                 <div className="pkg-label">{pkg.featuredLabel}</div>
               )}
-              <div className="pkg-art">{pkg.emoji}</div>
+              <div className="pkg-art">
+                <img src={pkg.image} alt={pkg.name} />
+              </div>
               <div className="pkg-body">
                 <div className="pkg-tier">{pkg.tier}</div>
                 <div className="pkg-name">{pkg.name}</div>
