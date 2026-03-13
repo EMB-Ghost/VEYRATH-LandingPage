@@ -59,6 +59,7 @@ export const navigation = {
     { label: "Lore", href: "#lore" },
     { label: "Reinos", href: "#realms" },
     { label: "Classes", href: "#classes" },
+    { label: "Profissões", href: "#profissoes" },
     { label: "Sistemas", href: "#sistemas" },
     { label: "Pre-Order", href: "#preorder" },
   ],
@@ -152,6 +153,80 @@ export const realms = {
         "O epicentro da corrupção; um planalto fraturado com fendas roxas e energia instável que distorce a própria realidade.",
       badge: "Corrupção",
       image: "/Kaelorn.png",
+    },
+  ],
+};
+
+// ─────────────────────────────────────────────────────────────
+// SEÇÃO PROFISSÕES
+// ─────────────────────────────────────────────────────────────
+export const profissoes = {
+  label: "Ofícios de Veyrath",
+  titleLine1: "AS PROFISSÕES",
+  titleLine2: "DO REINO",
+  cards: [
+    {
+      id: "Prof. I",
+      name: "Minerador",
+      description: "Extrai minérios raros das profundezas dos cinco reinos. Essencial para toda cadeia de produção.",
+      badge: "Coleta",
+      image: "/profissoes/minerador.png",
+    },
+    {
+      id: "Prof. II",
+      name: "Ferreiro",
+      description: "Forja armas e armaduras com maestria. Quanto maior a habilidade, mais poderoso o equipamento.",
+      badge: "Criação",
+      image: "/profissoes/ferreiro.png",
+    },
+    {
+      id: "Prof. III",
+      name: "Armeiro",
+      description: "Especialista em armaduras pesadas e escudos. Produz proteções únicas para os guerreiros de Veyrath.",
+      badge: "Criação",
+      image: "/profissoes/armeiro.png",
+    },
+    {
+      id: "Prof. IV",
+      name: "Arcano",
+      description: "Domina a criação de itens mágicos e encantamentos. Seus artefatos alteram o rumo das batalhas.",
+      badge: "Magia",
+      image: "/profissoes/arcano.png",
+    },
+    {
+      id: "Prof. V",
+      name: "Joalheiro",
+      description: "Cria gemas e acessórios com atributos especiais. Itens raros que amplificam o poder do portador.",
+      badge: "Criação",
+      image: "/profissoes/joalheiro.png",
+    },
+    {
+      id: "Prof. VI",
+      name: "Cozinheiro",
+      description: "Prepara alimentos que concedem buffs temporários. Indispensável em longas batalhas e explorações.",
+      badge: "Suporte",
+      image: "/profissoes/cozinheiro.png",
+    },
+    {
+      id: "Prof. VII",
+      name: "Alquimista",
+      description: "Cria poções, venenos e elixires poderosos. Conhece os segredos das plantas e minerais de Veyrath.",
+      badge: "Alquimia",
+      image: "/profissoes/alquimista.png",
+    },
+    {
+      id: "Prof. VIII",
+      name: "Senhor dos Mapas",
+      description: "Cartografa territórios inexplorados e vende rotas exclusivas. Informação é poder nos reinos fraturados.",
+      badge: "Exploração",
+      image: "/profissoes/senhor-dos-mapas.png",
+    },
+    {
+      id: "Prof. IX",
+      name: "Mercador das Sombras",
+      description: "Opera no mercado negro de Veyrath. Consegue itens raros e proibidos para quem pagar o preço certo.",
+      badge: "Comércio",
+      image: "/profissoes/mercador-das-sombras.png",
     },
   ],
 };
@@ -354,11 +429,11 @@ export const ctaFinal = {
 export const partners = {
   label: "Director",
   chips: [
-    { label: "🎮 Ghost" },
-    { label: "𝕏 Twitter / X" },
-    { label: "▶ YouTube Gaming" },
-    { label: "🎮 GamersHub" },
-    { label: "📺 Twitch" },
+    { label: "💀 STARZ 💀" },
+    { label: "👒 ChapéudePalha 👒" },
+    { label: "⚜️ Ghost ⚜️" },
+    { label: "🔥 Embrasa Games 🔥" },
+    { label: "⚔️ Veyrath ⚔️" },
   ],
   streamers: [
     {
@@ -369,7 +444,7 @@ export const partners = {
     {
       avatar: "⚔️",
       name: "Thales, Rei deles",
-      platform: "STREAMER · TWITCH",
+      platform: "STREAMER? · TWITCH",
     },
   ],
 };
