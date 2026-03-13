@@ -1066,6 +1066,123 @@ body {
 }
 
 /* ============================================================
+   PROFISSÕES SECTION
+   ============================================================ */
+.veyrath-profissoes {
+  padding: 140px 0;
+  background: linear-gradient(180deg, var(--abyss), var(--ink));
+  position: relative;
+}
+
+.profissoes-intro {
+  text-align: center;
+  margin-bottom: 72px;
+}
+
+.profissoes-scroll-track {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  padding: 0 48px 24px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.prof-card {
+  flex: 0 0 220px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--glass);
+  cursor: none;
+  transition: all 0.4s;
+}
+
+.prof-card:hover {
+  border-color: var(--border-hi);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 24px 80px rgba(212, 160, 23, 0.15),
+    0 0 0 1px rgba(212, 160, 23, 0.1);
+}
+
+.prof-card-art {
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(160deg, rgba(35,51,152,0.15), rgba(80,0,120,0.2));
+}
+
+.prof-card-art img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.prof-card-art::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(to top, var(--glass), transparent);
+  z-index: 1;
+}
+
+/* Placeholder enquanto não há imagem */
+.prof-card-art:not(:has(img[src])),
+.prof-card-art img[src=""] {
+  font-size: 4rem;
+}
+
+.prof-card-body {
+  padding: 18px 20px 22px;
+}
+
+.prof-id {
+  font-size: 0.58rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+
+.prof-name {
+  font-family: "Cinzel", serif;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  color: var(--ash);
+  margin-bottom: 10px;
+}
+
+.prof-desc {
+  font-size: 0.80rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+
+.prof-badge {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 4px 10px;
+  font-size: 0.58rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  border-radius: 2px;
+}
+
+/* ============================================================
    CLASSES SECTION
    ============================================================ */
 .veyrath-classes {
@@ -2258,6 +2375,21 @@ body {
 
   .realm-card {
     flex: 0 0 220px;
+  }
+
+  /* PROFISSÕES */
+  .profissoes-scroll-track {
+    justify-content: flex-start;
+    padding: 0 20px 24px;
+    flex-wrap: nowrap;
+  }
+
+  .prof-card {
+    flex: 0 0 200px;
+  }
+
+  .prof-card-art {
+    height: 240px;
   }
 
   /* CLASSES */
