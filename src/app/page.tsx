@@ -9,6 +9,7 @@ import {
   lore,
   realms,
   classes,
+  profissoes,
   sistemas,
   preorder,
   ctaFinal,
@@ -199,6 +200,34 @@ export default function Home() {
                 <h3 className="realm-name">{card.name}</h3>
                 <p className="realm-desc">{card.description}</p>
                 <span className="realm-badge">{card.badge}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ============================================================
+          PROFISSÕES
+          ============================================================ */}
+      <section className="veyrath-profissoes" id="profissoes">
+        <div className="section-inner profissoes-intro" data-reveal>
+          <p className="s-label">{profissoes.label}</p>
+          <h2 className="s-title">
+            {profissoes.titleLine1} <em>{profissoes.titleLine2}</em>
+          </h2>
+        </div>
+
+        <div className="profissoes-scroll-track">
+          {profissoes.cards.map((card) => (
+            <div key={card.id} className="prof-card" data-reveal>
+              <div className="prof-card-art">
+                <img src={card.image} alt={card.name} />
+              </div>
+              <div className="prof-card-body">
+                <p className="prof-id">{card.id}</p>
+                <h3 className="prof-name">{card.name}</h3>
+                <p className="prof-desc">{card.description}</p>
+                <span className="prof-badge">{card.badge}</span>
               </div>
             </div>
           ))}
