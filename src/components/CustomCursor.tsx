@@ -6,27 +6,12 @@ export default function CustomCursor() {
     const cursor = document.getElementById('custom-cursor') as HTMLDivElement;
     if (!cursor) return;
 
-    let mouseX = 0, mouseY = 0;
-    let cursorX = 0, cursorY = 0;
-
     const handleMouseMove = (e: MouseEvent) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
+      cursor.style.left = `${e.clientX}px`;
+      cursor.style.top = `${e.clientY}px`;
     };
 
     document.addEventListener('mousemove', handleMouseMove);
-
-    const animate = () => {
-      cursorX += (mouseX - cursorX) * 0.14;
-      cursorY += (mouseY - cursorY) * 0.14;
-
-      cursor.style.left = `${cursorX}px`;
-      cursor.style.top = `${cursorY}px`;
-
-      requestAnimationFrame(animate);
-    };
-    animate();
-
     return () => document.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
