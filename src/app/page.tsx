@@ -3,6 +3,7 @@
 import CustomCursor from "@/components/CustomCursor";
 import StarfieldCanvas from "@/components/StarfieldCanvas";
 import ClassSelector from "@/components/ClassSelector";
+import QuizDestino from "@/components/QuizDestino";
 import Countdown from "@/components/Countdown";
 import ScrollReveal from "@/components/ScrollReveal";
 import {
@@ -261,47 +262,8 @@ export default function Home() {
           <h2 className="s-title">QUAL É O SEU <em>DESTINO?</em></h2>
           <p className="quiz-sub">6 perguntas revelam seu Reino, Classe e Profissão em Veyrath</p>
         </div>
-        <div className="quiz-container" data-reveal>
-          <div id="quiz-inner">
-            <div id="qbody">
-              <div className="prog" id="prog"></div>
-              <p className="qtext" id="qtext"></p>
-              <div className="qopts" id="opts"></div>
-            </div>
-            <div className="qresult" id="rbody">
-              <p className="r-classe" id="r-classe"></p>
-              <p className="r-reino" id="r-reino"></p>
-              <p className="r-prof" id="r-prof"></p>
-              <div className="num-box">
-                <p className="num-lbl">Fundador Número</p>
-                <p className="num-val" id="r-num"></p>
-                <p className="num-sub">Sua lenda precede a de todos</p>
-              </div>
-              <p className="r-desc" id="r-desc"></p>
-              <div className="r-pdesc" id="r-pdesc"></div>
-              <p className="q-counter">Já <b id="cnt">1.043</b> heróis reservaram seu lugar</p>
-              <div className="email-row" id="erow">
-                <input className="email-in" type="email" id="ein" placeholder="seu@email.com" />
-                <button className="btn-gold" onClick={async () => {
-                  const el = document.getElementById('ein') as HTMLInputElement;
-                  const v = el.value;
-                  if (!v || !v.includes('@')) { el.style.borderColor='rgba(226,75,74,0.5)'; return; }
-                  try {
-                    await fetch('https://formspree.io/f/mojkroly', {
-                      method: 'POST',
-                      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                      body: JSON.stringify({ email: v, reino: document.getElementById('r-reino')?.textContent, classe: document.getElementById('r-classe')?.textContent, profissao: document.getElementById('r-prof')?.textContent, fundador: document.getElementById('r-num')?.textContent })
-                    });
-                  } catch(e) {}
-                  document.getElementById('erow')!.style.display='none';
-                  document.getElementById('conf')!.classList.add('on');
-                }}>Registrar lenda</button>
-              </div>
-              <div className="q-confirmed" id="conf">✦ Lenda registrada — você será notificado no lançamento em 2027</div>
-              <p className="q-share">Compartilhe seu resultado com a comunidade de Veyrath</p>
-              <button className="btn-restart" id="btn-restart">Tentar novamente</button>
-            </div>
-          </div>
+        <div className="section-inner" data-reveal>
+          <QuizDestino />
         </div>
       </section>
 
@@ -403,11 +365,11 @@ export default function Home() {
                   ))}
                 </ul>
                 {pkg.ctaStyle === "fill" ? (
-                  <a href="#quiz">
+                  <a href="https://www.catarse.me/veyrath_fractured" target="_blank" rel="noopener noreferrer">
                     <button className="btn-pkg-fill">{pkg.ctaLabel}</button>
                   </a>
                 ) : (
-                  <a href="#quiz">
+                  <a href="https://www.catarse.me/veyrath_fractured" target="_blank" rel="noopener noreferrer">
                     <button className="btn-pkg-outline">{pkg.ctaLabel}</button>
                   </a>
                 )}
@@ -565,10 +527,6 @@ export default function Home() {
             var cnt=1010;var iv=setInterval(function(){cnt++;var el=document.getElementById('cnt');if(el)el.textContent=cnt.toLocaleString('pt-BR');if(cnt>=1043)clearInterval(iv);},70);
           }
           var rb=document.getElementById('btn-restart');
-          if(rb)rb.onclick=function(){answers=[];step=0;document.getElementById('qbody').style.display='block';document.getElementById('rbody').classList.remove('on');var er=document.getElementById('erow');if(er)er.style.display='flex';var cf=document.getElementById('conf');if(cf)cf.classList.remove('on');var ei=document.getElementById('ein');if(ei)(ei).value='';renderQ();};
-          renderQ();
-        })();
-      ` }} />
     </>
   );
 }
