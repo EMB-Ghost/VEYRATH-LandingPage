@@ -14,7 +14,7 @@
 export const siteMetadata = {
   title: "VEYRATH — Os Reinos Fraturados | MMORPG 2027",
   description:
-    "O MMORPG 3D de mundo aberto que chega em 2027. Cinco reinos estilhaçados, três classes únicas, economia livre e escolhas permanentes. Wishlist no Steam agora.",
+    "O MMORPG 3D de mundo aberto que chega em 2027. Cinco reinos estilhaçados, três classes únicas, economia livre e escolhas permanentes. Descubra seu destino agora.",
   keywords: [
     "MMORPG",
     "VEYRATH",
@@ -43,7 +43,7 @@ export const siteMetadata = {
 // LINKS EXTERNOS (Steam, Discord, redes sociais)
 // ─────────────────────────────────────────────────────────────
 export const links = {
-  steam: "https://steamcommunity.com/groups/EmbrasaGames",               // Substitua pelo link real da Wishlist
+  steam: "https://www.catarse.me/veyrath_fractured",
   discord: "https://discord.gg/g567wFPy3s",                             // Substitua pelo link real do Discord
   twitter: "https://x.com/VeyrathFracture",                            // Substitua pelo link real do Twitter/X
   youtube: "https://youtube.com/@VEYRATHOSREINOSFRATURADOS",          // Substitua pelo link real do YouTube
@@ -59,12 +59,13 @@ export const navigation = {
     { label: "Lore", href: "#lore" },
     { label: "Reinos", href: "#realms" },
     { label: "Classes", href: "#classes" },
+    { label: "Quiz do Destino", href: "#quiz" },
     { label: "Profissões", href: "#profissoes" },
     { label: "Sistemas", href: "#sistemas" },
     { label: "Pre-Order", href: "#preorder" },
   ],
   ctaDiscord: "Discord",
-  ctaSteam: "Wishlist Steam",
+  ctaSteam: "Meu Destino",
 };
 
 // ─────────────────────────────────────────────────────────────
@@ -74,7 +75,7 @@ export const hero = {
   eyebrow: "PC · STEAM · LANÇAMENTO 2027",
   title: "VEYRATH",
   tagline: '"Os Reinos Fraturados — O novo MMORPG que você precisa!"',
-  ctaPrimary: "🛒 Wishlist no Steam",
+  ctaPrimary: "✦ Descobrir meu Destino",
   ctaSecondary: "⚔ Entrar no Discord",
   badges: [
     "MMORPG 3D",
@@ -420,7 +421,7 @@ export const ctaFinal = {
   title: "SUA LENDA COMEÇA AGORA",
   subtitle:
     "Prepare-se para o lançamento em 2027. Junte-se a milhares de heróis cujas histórias já estão sendo escritas — e nunca serão apagadas.",
-  ctaLabel: "🛒 Wishlist Gratuita no Steam",
+  ctaLabel: "✦ Descobrir meu Destino",
 };
 
 // ─────────────────────────────────────────────────────────────
