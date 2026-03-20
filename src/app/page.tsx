@@ -3,7 +3,6 @@
 import CustomCursor from "@/components/CustomCursor";
 import StarfieldCanvas from "@/components/StarfieldCanvas";
 import ClassSelector from "@/components/ClassSelector";
-import QuizDestino from "@/components/QuizDestino";
 import Countdown from "@/components/Countdown";
 import ScrollReveal from "@/components/ScrollReveal";
 import {
@@ -262,8 +261,47 @@ export default function Home() {
           <h2 className="s-title">QUAL É O SEU <em>DESTINO?</em></h2>
           <p className="quiz-sub">6 perguntas revelam seu Reino, Classe e Profissão em Veyrath</p>
         </div>
-        <div className="section-inner" data-reveal>
-          <QuizDestino />
+        <div className="quiz-container" data-reveal>
+          <div id="quiz-inner">
+            <div id="qbody">
+              <div className="prog" id="prog"></div>
+              <p className="qtext" id="qtext"></p>
+              <div className="qopts" id="opts"></div>
+            </div>
+            <div className="qresult" id="rbody">
+              <p className="r-classe" id="r-classe"></p>
+              <p className="r-reino" id="r-reino"></p>
+              <p className="r-prof" id="r-prof"></p>
+              <div className="num-box">
+                <p className="num-lbl">Fundador Número</p>
+                <p className="num-val" id="r-num"></p>
+                <p className="num-sub">Sua lenda precede a de todos</p>
+              </div>
+              <p className="r-desc" id="r-desc"></p>
+              <div className="r-pdesc" id="r-pdesc"></div>
+              <p className="q-counter">Já <b id="cnt">1.043</b> heróis reservaram seu lugar</p>
+              <div className="email-row" id="erow">
+                <input className="email-in" type="email" id="ein" placeholder="seu@email.com" />
+                <button className="btn-gold" onClick={async () => {
+                  const el = document.getElementById('ein') as HTMLInputElement;
+                  const v = el.value;
+                  if (!v || !v.includes('@')) { el.style.borderColor='rgba(226,75,74,0.5)'; return; }
+                  try {
+                    await fetch('https://formspree.io/f/mojkroly', {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                      body: JSON.stringify({ email: v, reino: document.getElementById('r-reino')?.textContent, classe: document.getElementById('r-classe')?.textContent, profissao: document.getElementById('r-prof')?.textContent, fundador: document.getElementById('r-num')?.textContent })
+                    });
+                  } catch(e) {}
+                  document.getElementById('erow')!.style.display='none';
+                  document.getElementById('conf')!.classList.add('on');
+                }}>Registrar lenda</button>
+              </div>
+              <div className="q-confirmed" id="conf">✦ Lenda registrada — você será notificado no lançamento em 2027</div>
+              <p className="q-share">Compartilhe seu resultado com a comunidade de Veyrath</p>
+              <button className="btn-restart" id="btn-restart">Tentar novamente</button>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -365,11 +403,11 @@ export default function Home() {
                   ))}
                 </ul>
                 {pkg.ctaStyle === "fill" ? (
-                  <a href="https://www.catarse.me/veyrath_fractured" target="_blank" rel="noopener noreferrer">
+                  <a href="#quiz">
                     <button className="btn-pkg-fill">{pkg.ctaLabel}</button>
                   </a>
                 ) : (
-                  <a href="https://www.catarse.me/veyrath_fractured" target="_blank" rel="noopener noreferrer">
+                  <a href="#quiz">
                     <button className="btn-pkg-outline">{pkg.ctaLabel}</button>
                   </a>
                 )}
@@ -428,6 +466,116 @@ export default function Home() {
       </section>
 
       {/* ============================================================
+          SOBRE O ESTÚDIO
+          ============================================================ */}
+      <section className="veyrath-studio" id="studio">
+        <div className="section-inner studio-inner" data-reveal>
+          <div className="studio-text">
+            <p className="s-label">Por trás do jogo</p>
+            <h2 className="s-title">EMBRASA <em>GAMES</em></h2>
+            <p className="studio-desc">
+              Veyrath é um projeto solo desenvolvido em Florianópolis, Santa Catarina — Brasil.
+              Um desenvolvedor, um sonho, e um GDD que virou realidade.
+            </p>
+            <p className="studio-desc">
+              A Embrasa Games nasceu da paixão por MMORPGs da era clássica — jogos que criavam
+              comunidades reais, onde cada escolha importava e cada jogador tinha uma história única.
+              Veyrath é a resposta brasileira para esse vazio.
+            </p>
+            <p className="studio-desc">
+              <strong>Zero pay-to-win. Zero atalhos. 100% paixão.</strong>
+            </p>
+            <div className="studio-stats">
+              <div className="studio-stat"><span className="studio-num">1</span><span className="studio-lbl">Desenvolvedor</span></div>
+              <div className="studio-stat"><span className="studio-num">1.0</span><span className="studio-lbl">Versão do GDD</span></div>
+              <div className="studio-stat"><span className="studio-num">2026</span><span className="studio-lbl">Início do Dev</span></div>
+              <div className="studio-stat"><span className="studio-num">2027</span><span className="studio-lbl">Early Access</span></div>
+            </div>
+          </div>
+          <div className="studio-visual" data-reveal-right>
+            <div className="studio-card">
+              <div className="studio-avatar">⚔️</div>
+              <p className="studio-name">EMB-Ghost</p>
+              <p className="studio-role">Game Designer & Developer</p>
+              <p className="studio-loc">📍 Florianópolis, SC — Brasil</p>
+              <div className="studio-links">
+                <a href="https://discord.gg/g567wFPy3s" className="studio-link">Discord</a>
+                <a href="https://x.com/VeyrathFracture" className="studio-link">Twitter/X</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================
+          ROADMAP TEASER
+          ============================================================ */}
+      <section className="veyrath-roadmap-teaser" data-reveal>
+        <div className="section-inner roadmap-teaser-inner">
+          <div className="roadmap-teaser-text">
+            <p className="s-label">Desenvolvimento Público</p>
+            <h2 className="s-title">ROADMAP <em>COMPLETO</em></h2>
+            <p className="roadmap-teaser-desc">
+              Acompanhe cada etapa do desenvolvimento de Veyrath — do GDD ao lançamento.
+              Transparência total com a comunidade.
+            </p>
+          </div>
+          <div className="roadmap-fases">
+            <div className="roadmap-fase roadmap-done">
+              <span className="rf-label">Jan–Mar 2026</span>
+              <span className="rf-nome">Fundação & GDD</span>
+              <span className="rf-status">✓ Concluído</span>
+            </div>
+            <div className="roadmap-fase roadmap-progress">
+              <span className="rf-label">Abr–Dez 2026</span>
+              <span className="rf-nome">Pré-Produção</span>
+              <span className="rf-status">⬤ Em Dev</span>
+            </div>
+            <div className="roadmap-fase roadmap-upcoming">
+              <span className="rf-label">Jan–Jun 2027</span>
+              <span className="rf-nome">Alpha Fechado</span>
+              <span className="rf-status">Planejado</span>
+            </div>
+            <div className="roadmap-fase roadmap-upcoming">
+              <span className="rf-label">Mai 2027</span>
+              <span className="rf-nome">Early Access</span>
+              <span className="rf-status">Planejado</span>
+            </div>
+          </div>
+          <a href="/roadmap" className="roadmap-teaser-btn">Ver Roadmap Completo →</a>
+        </div>
+      </section>
+
+      {/* ============================================================
+          FAQ
+          ============================================================ */}
+      <section className="veyrath-faq" id="faq" data-reveal>
+        <div className="section-inner">
+          <div className="faq-intro">
+            <p className="s-label">Dúvidas frequentes</p>
+            <h2 className="s-title">FAQ</h2>
+          </div>
+          <div className="faq-grid">
+            {[
+              { q: "Veyrath é gratuito para jogar?", a: "O Early Access terá um custo de entrada. Após o lançamento completo, o modelo de negócio será definido com base no feedback da comunidade. O que garantimos: zero pay-to-win. Nunca." },
+              { q: "Quando o jogo vai lançar?", a: "O Early Access está previsto para Maio de 2027. Fundadores que adquirirem o pacote terão acesso antecipado ao Alpha Fechado no início de 2027." },
+              { q: "Vai ter versão para Mobile ou Console?", a: "Não. Veyrath é e sempre será exclusivo para PC (Steam). A experiência MMORPG que queremos entregar exige mouse, teclado e a capacidade de processamento de um computador." },
+              { q: "O Pre-Order no Catarse é reembolsável?", a: "Sim. Dentro das políticas da plataforma Catarse, reembolsos podem ser solicitados. Recomendamos ler os termos da campanha em catarse.me/veyrath_fractured." },
+              { q: "Vai ter Pay-to-Win?", a: "Jamais. Esse é um dos pilares inegociáveis de Veyrath. A loja de skins (cosméticos) é o único modelo monetário planejado após o lançamento. Poder não se compra." },
+              { q: "Quais são os requisitos mínimos do PC?", a: "Ainda estamos em desenvolvimento, mas estimamos: CPU i5 8ª geração, 16GB RAM, GPU GTX 1060 6GB. Os requisitos finais serão publicados antes do Alpha." },
+              { q: "Vou perder meu personagem no lançamento final?", a: "O wipe entre Alpha e Early Access será comunicado com antecedência. Fundadores receberão compensações especiais por sua participação no teste." },
+              { q: "Como posso contribuir com o desenvolvimento?", a: "Apoiando no Catarse, entrando no Discord para dar feedback, e compartilhando o projeto. Um solo dev brasileiro agradece muito cada divulgação." },
+            ].map((item, i) => (
+              <details key={i} className="faq-item">
+                <summary className="faq-q">{item.q}</summary>
+                <p className="faq-a">{item.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================
           PARTNERS
           ============================================================ */}
       <section className="veyrath-partners" id="partners">
@@ -469,6 +617,16 @@ export default function Home() {
             </a>
           ))}
         </div>
+        <div className="footer-links">
+          <a href="/roadmap" className="footer-link">Roadmap</a>
+          <a href="/privacidade" className="footer-link">Política de Privacidade</a>
+          <a href="#faq" className="footer-link">FAQ</a>
+          <a href="#studio" className="footer-link">Sobre o Estúdio</a>
+        </div>
+        <div className="footer-lgpd">
+          Este site coleta e-mails mediante consentimento, conforme a LGPD (Lei 13.709/2018).
+          Seus dados são usados apenas para comunicações sobre Veyrath e nunca compartilhados com terceiros.
+        </div>
         <div className="footer-lang">
           {footer.languages.map((lang, i) => (
             <span key={lang}>
@@ -482,6 +640,55 @@ export default function Home() {
           ))}
         </div>
       </footer>
+
+      <script dangerouslySetInnerHTML={{ __html: `
+        (function(){
+          var Qs=[
+            {t:"A Fratura Primordial rasgou o céu de Veyrath. Você desperta numa caverna com um Fragmento de Éter pulsando no peito. Seu primeiro instinto é...",ops:[{l:"⚔️ Empunhar o que tiver à mão e proteger quem está próximo",s:"Protetor nato",v:{r:1,c:0,p:1}},{l:"👁️ Observar em silêncio, mapear saídas, agir com precisão",s:"Calculista nato",v:{r:3,c:1,p:7}},{l:"✨ Sentir a energia do Fragmento e tentar canalizá-la",s:"Sensível ao Éter",v:{r:5,c:2,p:3}},{l:"⚗️ Estudar o ambiente, coletar amostras, entender o que ocorreu",s:"Pesquisador compulsivo",v:{r:2,c:2,p:6}}]},
+            {t:"Você chega à cidade de Aurenthia. O ferreiro Thalor da Forja Eterna te oferece trabalho. O que você prefere fazer?",ops:[{l:"🔨 Aprender o Ritual da Forja — bater metal é meditação",s:"Artífice paciente",v:{r:1,c:0,p:1}},{l:"💎 Trabalhar com gemas e acessórios na bancada de Lirael",s:"Perfeccionista detalhista",v:{r:2,c:2,p:4}},{l:"🗡️ Ir direto para o quartel treinar com Veyra, a Lâmina Sombria",s:"Combatente focado",v:{r:3,c:1,p:2}},{l:"📦 Preferir negociar e descobrir o que o mercado negro tem a oferecer",s:"Oportunista esperto",v:{r:5,c:1,p:8}}]},
+            {t:"Você enfrenta um monstro corrompido de Kaelorn. Qual é sua abordagem de combate?",ops:[{l:"🛡️ Ficar na frente, absorver os golpes, proteger os aliados",s:"Muralha viva",v:{r:1,c:0,p:1}},{l:"🌀 Conjurar feitiços do Éter e amplificar minha Aura com o Arcano",s:"Mestre arcano",v:{r:5,c:2,p:3}},{l:"🏹 Usar venenos do Alquimista Zephyr e atacar pelo flanco",s:"Assassino tático",v:{r:3,c:1,p:6}},{l:"🍖 Preparar rações do Caldeirão Viajante antes — comida é vantagem",s:"Estrategista de suporte",v:{r:2,c:0,p:5}}]},
+            {t:"O Cartógrafo Eldrin oferece um portal raro para Kaelorn — reino de PvP livre e corrupção total. O que você faz?",ops:[{l:"💀 Entro sem hesitar — risco alto, recompensa lendária",s:"Caçador de glória",v:{r:5,c:1,p:7}},{l:"🗺️ Peço os mapas primeiro, planejo cada passo antes de cruzar",s:"Explorador metódico",v:{r:4,c:0,p:7}},{l:"🔮 Só entro com minha Aura amplificada e uma poção de resistência",s:"Preparado para o caos",v:{r:5,c:2,p:6}},{l:"🤝 Organizo um grupo antes — Kaelorn não é lugar para ir sozinho",s:"Líder natural",v:{r:1,c:0,p:1}}]},
+            {t:"Nos Reinos Fraturados, qual ambiente ressoa com sua alma?",ops:[{l:"☀️ Planaltos dourados de Aurenthia — ruínas ancestrais sob céu claro",s:"Alma da luz",v:{r:1,c:0,p:4}},{l:"🌿 Florestas colossais de Sylphae — cachoeiras e segredos escondidos",s:"Espírito selvagem",v:{r:2,c:2,p:5}},{l:"❄️ Montanhas geladas de Glacieryn — silêncio e força absoluta",s:"Guardião resistente",v:{r:4,c:0,p:2}},{l:"🌑 Pântanos de Obsidryn — névoa, perigo e oportunidades ocultas",s:"Filho das sombras",v:{r:3,c:1,p:8}}]},
+            {t:"Ao nível 50, sua subclasse é permanente. Qual legado você deixa gravado nos anais de Veyrath?",ops:[{l:"👑 Fundador de um Clã lendário que dominou três reinos",s:"Líder eterno",v:{r:1,c:0,p:1}},{l:"⚗️ O Alquimista que criou a poção que mudou o PvP",s:"Artesão do caos",v:{r:3,c:2,p:6}},{l:"🗺️ O primeiro a mapear toda a Fratura Primordial",s:"Explorador lendário",v:{r:4,c:1,p:7}},{l:"💰 O Mercador das Sombras que controlou a economia de Kaelorn",s:"Senhor da economia",v:{r:5,c:1,p:8}}]}
+          ];
+          var REINOS={1:{n:"Aurenthia",c:"Protetor",ct:"— Vanguarda do Reino",d:"Os planaltos dourados te reconhecem como um dos seus. Você carrega a essência dos heróis ancestrais — protetor nato, líder silencioso. O Fragmento de Éter no seu peito brilha com veias cyan-douradas."},2:{n:"Sylphae",c:"Teurgo",ct:"— Mestre do Éter",d:"A selva vertical de Sylphae te chama com suas cachoeiras colossais e segredos milenares. Você vê onde outros são cegos, sente o que outros ignoram."},3:{n:"Obsidryn",c:"Algoz",ct:"— Lâmina das Sombras",d:"As águas negras de Obsidryn espelham sua alma. Névoa perpétua, perigo em cada sombra — mas também oportunidades que só os mais perspicazes enxergam."},4:{n:"Glacieryn",c:"Protetor",ct:"— Vanguarda do Reino",d:"Ventos cortantes e neve eterna de Glacieryn forjaram sua determinação. Você suporta o que quebraria qualquer outro. Sua força não grita — ela resiste."},5:{n:"Kaelorn",c:"Algoz",ct:"— Lâmina das Sombras",d:"O epicentro da Corrupção te reconhece como igual. Kaelorn é o único reino de PvP livre — onde os fracos morrem e os fortes escrevem a história."}};
+          var PROFS={1:{n:"Ferreiro",npc:"Thalor da Forja Eterna",d:"Você domina o Ritual da Forja — o processo sagrado de têmpera que cria equipamentos impossíveis de obter de outra forma. Protetores e guerreiros dependem de você."},2:{n:"Armeiro",npc:"Veyra, a Lâmina Sombria",d:"Especialista em armas leves e reforços elementais. Algozes te buscam para obter as armas que definem batalhas."},3:{n:"Arcano",npc:"Arcanis, Tecelão de Runas",d:"Você cria itens mágicos, catalisadores e amplificadores de Aura. Teurgos não sobrevivem sem você."},4:{n:"Joalheiro",npc:"Lirael, Joias do Destino",d:"Acessórios com resistências, crítico e redução de cooldown. Toda classe em Veyrath precisa do que você cria."},5:{n:"Cozinheiro",npc:"Margo, Caldeirão Viajante",d:"Uma ração ativa por categoria — mas o efeito que ela gera muda batalhas inteiras. Em PvP de longa duração, quem tem suas rações sobrevive mais."},6:{n:"Alquimista",npc:"Zephyr, Frascos Proibidos",d:"Poções, venenos e encantamentos. Receitas raras de endgame que só um Alquimista nível 50 desbloqueia. Seu poder no PvP é indireto — e letal."},7:{n:"Senhor dos Mapas",npc:"Eldrin, Cartógrafo Ancestral",d:"Mapas consumíveis, portais, chaves de dungeon — você controla o acesso ao mundo. Ninguém explora sem você."},8:{n:"Mercador das Sombras",npc:"Kael, o Mercador",d:"Contratos player/NPC, contrabando de alto risco e recompensa. Você joga com a economia emergente de Veyrath."}};
+          var answers=[],step=0;
+          function renderQ(){
+            var q=Qs[step];
+            var prog=document.getElementById('prog');
+            if(!prog)return;
+            prog.innerHTML='';
+            for(var i=0;i<Qs.length;i++){var d=document.createElement('div');d.className='qdot'+(i<step?' qd':i===step?' qa':'');prog.appendChild(d);}
+            document.getElementById('qtext').textContent=q.t;
+            var opts=document.getElementById('opts');opts.innerHTML='';
+            q.ops.forEach(function(o){var b=document.createElement('button');b.className='qopt';b.innerHTML='<strong>'+o.l+'</strong><span>'+o.s+'</span>';b.onclick=function(){pick(o.v);};opts.appendChild(b);});
+          }
+          function pick(v){answers.push(v);step++;if(step<Qs.length){renderQ();}else{showResult();}}
+          function showResult(){
+            var rs={},cs={},ps={};
+            answers.forEach(function(a){rs[a.r]=(rs[a.r]||0)+1;cs[a.c]=(cs[a.c]||0)+1;ps[a.p]=(ps[a.p]||0)+1;});
+            var r=+Object.keys(rs).sort(function(a,b){return rs[b]-rs[a];})[0];
+            var c=+Object.keys(cs).sort(function(a,b){return cs[b]-cs[a];})[0];
+            var p=+Object.keys(ps).sort(function(a,b){return ps[b]-ps[a];})[0];
+            var reino=REINOS[r]||REINOS[1];
+            var prof=PROFS[p]||PROFS[1];
+            var num='#'+(Math.floor(Math.random()*600)+800);
+            document.getElementById('r-classe').textContent=reino.c+' '+reino.ct;
+            document.getElementById('r-reino').textContent=reino.n;
+            document.getElementById('r-prof').textContent='Profissão: '+prof.n+' · '+prof.npc;
+            document.getElementById('r-num').textContent=num;
+            document.getElementById('r-desc').textContent=reino.d;
+            document.getElementById('r-pdesc').textContent='⚒ '+prof.d;
+            document.getElementById('qbody').style.display='none';
+            document.getElementById('rbody').classList.add('on');
+            var cnt=1010;var iv=setInterval(function(){cnt++;var el=document.getElementById('cnt');if(el)el.textContent=cnt.toLocaleString('pt-BR');if(cnt>=1043)clearInterval(iv);},70);
+          }
+          var rb=document.getElementById('btn-restart');
+          if(rb)rb.onclick=function(){answers=[];step=0;document.getElementById('qbody').style.display='block';document.getElementById('rbody').classList.remove('on');var er=document.getElementById('erow');if(er)er.style.display='flex';var cf=document.getElementById('conf');if(cf)cf.classList.remove('on');var ei=document.getElementById('ein');if(ei)(ei).value='';renderQ();};
+          renderQ();
+        })();
+      ` }} />
     </>
   );
 }
