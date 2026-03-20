@@ -482,51 +482,6 @@ export default function Home() {
           ))}
         </div>
       </footer>
-
-      <script dangerouslySetInnerHTML={{ __html: `
-        (function(){
-          var Qs=[
-            {t:"A Fratura Primordial rasgou o céu de Veyrath. Você desperta numa caverna com um Fragmento de Éter pulsando no peito. Seu primeiro instinto é...",ops:[{l:"⚔️ Empunhar o que tiver à mão e proteger quem está próximo",s:"Protetor nato",v:{r:1,c:0,p:1}},{l:"👁️ Observar em silêncio, mapear saídas, agir com precisão",s:"Calculista nato",v:{r:3,c:1,p:7}},{l:"✨ Sentir a energia do Fragmento e tentar canalizá-la",s:"Sensível ao Éter",v:{r:5,c:2,p:3}},{l:"⚗️ Estudar o ambiente, coletar amostras, entender o que ocorreu",s:"Pesquisador compulsivo",v:{r:2,c:2,p:6}}]},
-            {t:"Você chega à cidade de Aurenthia. O ferreiro Thalor da Forja Eterna te oferece trabalho. O que você prefere fazer?",ops:[{l:"🔨 Aprender o Ritual da Forja — bater metal é meditação",s:"Artífice paciente",v:{r:1,c:0,p:1}},{l:"💎 Trabalhar com gemas e acessórios na bancada de Lirael",s:"Perfeccionista detalhista",v:{r:2,c:2,p:4}},{l:"🗡️ Ir direto para o quartel treinar com Veyra, a Lâmina Sombria",s:"Combatente focado",v:{r:3,c:1,p:2}},{l:"📦 Preferir negociar e descobrir o que o mercado negro tem a oferecer",s:"Oportunista esperto",v:{r:5,c:1,p:8}}]},
-            {t:"Você enfrenta um monstro corrompido de Kaelorn. Qual é sua abordagem de combate?",ops:[{l:"🛡️ Ficar na frente, absorver os golpes, proteger os aliados",s:"Muralha viva",v:{r:1,c:0,p:1}},{l:"🌀 Conjurar feitiços do Éter e amplificar minha Aura com o Arcano",s:"Mestre arcano",v:{r:5,c:2,p:3}},{l:"🏹 Usar venenos do Alquimista Zephyr e atacar pelo flanco",s:"Assassino tático",v:{r:3,c:1,p:6}},{l:"🍖 Preparar rações do Caldeirão Viajante antes — comida é vantagem",s:"Estrategista de suporte",v:{r:2,c:0,p:5}}]},
-            {t:"O Cartógrafo Eldrin oferece um portal raro para Kaelorn — reino de PvP livre e corrupção total. O que você faz?",ops:[{l:"💀 Entro sem hesitar — risco alto, recompensa lendária",s:"Caçador de glória",v:{r:5,c:1,p:7}},{l:"🗺️ Peço os mapas primeiro, planejo cada passo antes de cruzar",s:"Explorador metódico",v:{r:4,c:0,p:7}},{l:"🔮 Só entro com minha Aura amplificada e uma poção de resistência",s:"Preparado para o caos",v:{r:5,c:2,p:6}},{l:"🤝 Organizo um grupo antes — Kaelorn não é lugar para ir sozinho",s:"Líder natural",v:{r:1,c:0,p:1}}]},
-            {t:"Nos Reinos Fraturados, qual ambiente ressoa com sua alma?",ops:[{l:"☀️ Planaltos dourados de Aurenthia — ruínas ancestrais sob céu claro",s:"Alma da luz",v:{r:1,c:0,p:4}},{l:"🌿 Florestas colossais de Sylphae — cachoeiras e segredos escondidos",s:"Espírito selvagem",v:{r:2,c:2,p:5}},{l:"❄️ Montanhas geladas de Glacieryn — silêncio e força absoluta",s:"Guardião resistente",v:{r:4,c:0,p:2}},{l:"🌑 Pântanos de Obsidryn — névoa, perigo e oportunidades ocultas",s:"Filho das sombras",v:{r:3,c:1,p:8}}]},
-            {t:"Ao nível 50, sua subclasse é permanente. Qual legado você deixa gravado nos anais de Veyrath?",ops:[{l:"👑 Fundador de um Clã lendário que dominou três reinos",s:"Líder eterno",v:{r:1,c:0,p:1}},{l:"⚗️ O Alquimista que criou a poção que mudou o PvP",s:"Artesão do caos",v:{r:3,c:2,p:6}},{l:"🗺️ O primeiro a mapear toda a Fratura Primordial",s:"Explorador lendário",v:{r:4,c:1,p:7}},{l:"💰 O Mercador das Sombras que controlou a economia de Kaelorn",s:"Senhor da economia",v:{r:5,c:1,p:8}}]}
-          ];
-          var REINOS={1:{n:"Aurenthia",c:"Protetor",ct:"— Vanguarda do Reino",d:"Os planaltos dourados te reconhecem como um dos seus. Você carrega a essência dos heróis ancestrais — protetor nato, líder silencioso. O Fragmento de Éter no seu peito brilha com veias cyan-douradas."},2:{n:"Sylphae",c:"Teurgo",ct:"— Mestre do Éter",d:"A selva vertical de Sylphae te chama com suas cachoeiras colossais e segredos milenares. Você vê onde outros são cegos, sente o que outros ignoram."},3:{n:"Obsidryn",c:"Algoz",ct:"— Lâmina das Sombras",d:"As águas negras de Obsidryn espelham sua alma. Névoa perpétua, perigo em cada sombra — mas também oportunidades que só os mais perspicazes enxergam."},4:{n:"Glacieryn",c:"Protetor",ct:"— Vanguarda do Reino",d:"Ventos cortantes e neve eterna de Glacieryn forjaram sua determinação. Você suporta o que quebraria qualquer outro. Sua força não grita — ela resiste."},5:{n:"Kaelorn",c:"Algoz",ct:"— Lâmina das Sombras",d:"O epicentro da Corrupção te reconhece como igual. Kaelorn é o único reino de PvP livre — onde os fracos morrem e os fortes escrevem a história."}};
-          var PROFS={1:{n:"Ferreiro",npc:"Thalor da Forja Eterna",d:"Você domina o Ritual da Forja — o processo sagrado de têmpera que cria equipamentos impossíveis de obter de outra forma. Protetores e guerreiros dependem de você."},2:{n:"Armeiro",npc:"Veyra, a Lâmina Sombria",d:"Especialista em armas leves e reforços elementais. Algozes te buscam para obter as armas que definem batalhas."},3:{n:"Arcano",npc:"Arcanis, Tecelão de Runas",d:"Você cria itens mágicos, catalisadores e amplificadores de Aura. Teurgos não sobrevivem sem você."},4:{n:"Joalheiro",npc:"Lirael, Joias do Destino",d:"Acessórios com resistências, crítico e redução de cooldown. Toda classe em Veyrath precisa do que você cria."},5:{n:"Cozinheiro",npc:"Margo, Caldeirão Viajante",d:"Uma ração ativa por categoria — mas o efeito que ela gera muda batalhas inteiras. Em PvP de longa duração, quem tem suas rações sobrevive mais."},6:{n:"Alquimista",npc:"Zephyr, Frascos Proibidos",d:"Poções, venenos e encantamentos. Receitas raras de endgame que só um Alquimista nível 50 desbloqueia. Seu poder no PvP é indireto — e letal."},7:{n:"Senhor dos Mapas",npc:"Eldrin, Cartógrafo Ancestral",d:"Mapas consumíveis, portais, chaves de dungeon — você controla o acesso ao mundo. Ninguém explora sem você."},8:{n:"Mercador das Sombras",npc:"Kael, o Mercador",d:"Contratos player/NPC, contrabando de alto risco e recompensa. Você joga com a economia emergente de Veyrath."}};
-          var answers=[],step=0;
-          function renderQ(){
-            var q=Qs[step];
-            var prog=document.getElementById('prog');
-            if(!prog)return;
-            prog.innerHTML='';
-            for(var i=0;i<Qs.length;i++){var d=document.createElement('div');d.className='qdot'+(i<step?' qd':i===step?' qa':'');prog.appendChild(d);}
-            document.getElementById('qtext').textContent=q.t;
-            var opts=document.getElementById('opts');opts.innerHTML='';
-            q.ops.forEach(function(o){var b=document.createElement('button');b.className='qopt';b.innerHTML='<strong>'+o.l+'</strong><span>'+o.s+'</span>';b.onclick=function(){pick(o.v);};opts.appendChild(b);});
-          }
-          function pick(v){answers.push(v);step++;if(step<Qs.length){renderQ();}else{showResult();}}
-          function showResult(){
-            var rs={},cs={},ps={};
-            answers.forEach(function(a){rs[a.r]=(rs[a.r]||0)+1;cs[a.c]=(cs[a.c]||0)+1;ps[a.p]=(ps[a.p]||0)+1;});
-            var r=+Object.keys(rs).sort(function(a,b){return rs[b]-rs[a];})[0];
-            var c=+Object.keys(cs).sort(function(a,b){return cs[b]-cs[a];})[0];
-            var p=+Object.keys(ps).sort(function(a,b){return ps[b]-ps[a];})[0];
-            var reino=REINOS[r]||REINOS[1];
-            var prof=PROFS[p]||PROFS[1];
-            var num='#'+(Math.floor(Math.random()*600)+800);
-            document.getElementById('r-classe').textContent=reino.c+' '+reino.ct;
-            document.getElementById('r-reino').textContent=reino.n;
-            document.getElementById('r-prof').textContent='Profissão: '+prof.n+' · '+prof.npc;
-            document.getElementById('r-num').textContent=num;
-            document.getElementById('r-desc').textContent=reino.d;
-            document.getElementById('r-pdesc').textContent='⚒ '+prof.d;
-            document.getElementById('qbody').style.display='none';
-            document.getElementById('rbody').classList.add('on');
-            var cnt=1010;var iv=setInterval(function(){cnt++;var el=document.getElementById('cnt');if(el)el.textContent=cnt.toLocaleString('pt-BR');if(cnt>=1043)clearInterval(iv);},70);
-          }
-          var rb=document.getElementById('btn-restart');
     </>
   );
 }
