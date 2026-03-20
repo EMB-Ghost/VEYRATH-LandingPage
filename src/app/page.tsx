@@ -1,3 +1,5 @@
+"use client";
+
 import CustomCursor from "@/components/CustomCursor";
 import StarfieldCanvas from "@/components/StarfieldCanvas";
 import ClassSelector from "@/components/ClassSelector";
