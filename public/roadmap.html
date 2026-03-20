@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Roadmap — VEYRATH: Os Reinos Fraturados</title>
+<meta name="description" content="Acompanhe o desenvolvimento de Veyrath — MMORPG 3D brasileiro previsto para 2027." />
+<style>
+  :root {
+    --gold: #d4a017;
+    --gold-dim: rgba(212,160,23,0.3);
+    --cyan: #7dd4f0;
+    --purple: #a855f7;
+    --ink: #07040f;
+    --ash: #f0e6c8;
+    --border: rgba(255,255,255,0.08);
+    --done: #3b6d11;
+    --done-border: rgba(99,153,34,0.4);
+    --progress: #185fa5;
+    --progress-border: rgba(55,138,221,0.4);
+    --upcoming: rgba(255,255,255,0.04);
+    --upcoming-border: rgba(255,255,255,0.08);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--ink);
+    color: var(--ash);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  .header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 24px 48px;
+    border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(7,4,15,0.92);
+    backdrop-filter: blur(12px);
+  }
+  .header-logo {
+    font-family: Georgia, serif; font-size: 1.1rem;
+    letter-spacing: 4px; color: var(--gold); text-decoration: none;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .header-logo span { font-size: 0.65rem; letter-spacing: 2px; color: rgba(200,185,255,0.5); }
+  .header-back {
+    font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase;
+    color: rgba(200,185,255,0.5); text-decoration: none;
+    border: 1px solid var(--border); padding: 8px 16px; border-radius: 6px;
+    transition: all 0.2s;
+  }
+  .header-back:hover { color: var(--ash); border-color: rgba(255,255,255,0.2); }
+
+  /* HERO */
+  .hero {
+    text-align: center; padding: 80px 24px 60px;
+    background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(83,74,183,0.18) 0%, transparent 60%);
+  }
+  .hero-label { font-size: 10px; letter-spacing: 6px; text-transform: uppercase; color: var(--gold); opacity: 0.7; margin-bottom: 12px; }
+  .hero-title { font-family: Georgia, serif; font-size: clamp(2rem, 5vw, 3.5rem); letter-spacing: 4px; margin-bottom: 12px; }
+  .hero-sub { font-size: 14px; color: rgba(200,185,255,0.5); letter-spacing: 2px; margin-bottom: 40px; }
+
+  /* LEGENDA */
+  .legenda {
+    display: flex; gap: 24px; justify-content: center; flex-wrap: wrap;
+    margin-bottom: 60px;
+  }
+  .leg-item { display: flex; align-items: center; gap: 8px; font-size: 12px; letter-spacing: 2px; color: rgba(200,185,255,0.6); }
+  .leg-dot { width: 10px; height: 10px; border-radius: 2px; }
+  .leg-done { background: #639922; }
+  .leg-progress { background: #378add; }
+  .leg-upcoming { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.2); }
+
+  /* CONTAINER */
+  .roadmap { max-width: 1100px; margin: 0 auto; padding: 0 24px 100px; }
+
+  /* FASE */
+  .fase { margin-bottom: 64px; }
+  .fase-header {
+    display: flex; align-items: center; gap: 16px;
+    margin-bottom: 24px; padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .fase-periodo {
+    font-size: 11px; letter-spacing: 5px; text-transform: uppercase;
+    color: var(--gold); opacity: 0.8;
+  }
+  .fase-nome {
+    font-family: Georgia, serif; font-size: 1.3rem; letter-spacing: 3px; color: var(--ash);
+  }
+  .fase-badge {
+    font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+    padding: 4px 10px; border-radius: 4px; margin-left: auto;
+  }
+  .badge-done { background: rgba(99,153,34,0.15); border: 1px solid var(--done-border); color: #97c459; }
+  .badge-progress { background: rgba(55,138,221,0.1); border: 1px solid var(--progress-border); color: #85b7eb; }
+  .badge-upcoming { background: rgba(255,255,255,0.03); border: 1px solid var(--border); color: rgba(200,185,255,0.4); }
+
+  /* GRID DE CATEGORIAS */
+  .categorias { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+
+  /* CATEGORIA */
+  .categoria { border-radius: 10px; padding: 16px; }
+  .cat-titulo {
+    font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+    margin-bottom: 12px; padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .cat-items { display: flex; flex-direction: column; gap: 6px; }
+
+  /* ITEM */
+  .item {
+    display: flex; align-items: center; gap: 8px;
+    padding: 7px 10px; border-radius: 6px;
+    font-size: 12px; letter-spacing: 0.5px;
+    transition: all 0.2s;
+  }
+  .item-icon { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+
+  /* STATUS */
+  .done { background: rgba(99,153,34,0.08); border: 1px solid var(--done-border); color: #c0dd97; }
+  .done .item-icon { background: #639922; }
+  .done .cat-titulo { color: #639922; }
+  .done.categoria { border: 1px solid var(--done-border); background: rgba(99,153,34,0.04); }
+
+  .progress { background: rgba(55,138,221,0.08); border: 1px solid rgba(55,138,221,0.2); color: #b5d4f4; }
+  .progress .item-icon { background: #378add; animation: pulse 1.5s ease-in-out infinite; }
+  .progress .cat-titulo { color: #378add; }
+  .progress.categoria { border: 1px solid var(--progress-border); background: rgba(55,138,221,0.04); }
+
+  .upcoming { background: var(--upcoming); border: 1px solid var(--upcoming-border); color: rgba(200,185,255,0.4); }
+  .upcoming .item-icon { background: rgba(255,255,255,0.15); }
+  .upcoming .cat-titulo { color: rgba(200,185,255,0.35); }
+  .upcoming.categoria { border: 1px solid var(--border); background: rgba(255,255,255,0.02); }
+
+  @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+
+  /* DIVISOR */
+  .divisor {
+    display: flex; align-items: center; gap: 16px;
+    margin: 48px 0; color: rgba(200,185,255,0.2);
+    font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+  }
+  .divisor::before, .divisor::after {
+    content: ''; flex: 1; height: 1px; background: var(--border);
+  }
+
+  /* FOOTER */
+  .footer {
+    text-align: center; padding: 32px;
+    border-top: 1px solid var(--border);
+    font-size: 11px; letter-spacing: 2px; color: rgba(200,185,255,0.25);
+  }
+  .footer a { color: var(--gold); text-decoration: none; opacity: 0.7; }
+  .footer a:hover { opacity: 1; }
+
+  @media (max-width: 768px) {
+    .header { padding: 16px 20px; }
+    .categorias { grid-template-columns: 1fr 1fr; }
+    .hero { padding: 48px 20px 40px; }
+  }
+  @media (max-width: 480px) {
+    .categorias { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <a href="https://www.veyrath.com.br" class="header-logo">
+    VEYRATH <span>OS REINOS FRATURADOS</span>
+  </a>
+  <a href="https://www.veyrath.com.br" class="header-back">← Voltar ao Site</a>
+</header>
+
+<section class="hero">
+  <p class="hero-label">Desenvolvimento Público</p>
+  <h1 class="hero-title">ROADMAP</h1>
+  <p class="hero-sub">Acompanhe cada passo da construção de Veyrath · Atualizado em Março 2026</p>
+
+  <div class="legenda">
+    <div class="leg-item"><div class="leg-dot leg-done"></div> Concluído</div>
+    <div class="leg-item"><div class="leg-dot leg-progress"></div> Em Desenvolvimento</div>
+    <div class="leg-item"><div class="leg-dot leg-upcoming"></div> Planejado</div>
+  </div>
+</section>
+
+<main class="roadmap">
+
+  <!-- FASE 1 -->
+  <div class="fase">
+    <div class="fase-header">
+      <div>
+        <p class="fase-periodo">Jan — Mar 2026</p>
+        <h2 class="fase-nome">Fase 1 · Fundação do Projeto</h2>
+      </div>
+      <span class="fase-badge badge-done">✓ Concluído</span>
+    </div>
+    <div class="categorias">
+      <div class="categoria done">
+        <p class="cat-titulo">Documentação</p>
+        <div class="cat-items">
+          <div class="item done"><div class="item-icon"></div> Game Design Document v1.0</div>
+          <div class="item done"><div class="item-icon"></div> Lore e História Principal</div>
+          <div class="item done"><div class="item-icon"></div> Sistema de Combate (GDD)</div>
+          <div class="item done"><div class="item-icon"></div> Os 5 Reinos Fraturados</div>
+          <div class="item done"><div class="item-icon"></div> Sistema de Classes (3 Pilares)</div>
+          <div class="item done"><div class="item-icon"></div> 9 Profissões Definidas</div>
+          <div class="item done"><div class="item-icon"></div> Duas Grandes Linhagens</div>
+          <div class="item done"><div class="item-icon"></div> Pêndulo do Éter</div>
+        </div>
+      </div>
+      <div class="categoria done">
+        <p class="cat-titulo">Identidade Visual</p>
+        <div class="cat-items">
+          <div class="item done"><div class="item-icon"></div> Logo e identidade do jogo</div>
+          <div class="item done"><div class="item-icon"></div> Arte conceitual dos 5 Reinos</div>
+          <div class="item done"><div class="item-icon"></div> Arte das 3 Classes</div>
+          <div class="item done"><div class="item-icon"></div> Arte das 9 Profissões</div>
+          <div class="item done"><div class="item-icon"></div> Key Art principal (capa)</div>
+          <div class="item done"><div class="item-icon"></div> Cursor Gema do Éter</div>
+        </div>
+      </div>
+      <div class="categoria done">
+        <p class="cat-titulo">Site Oficial</p>
+        <div class="cat-items">
+          <div class="item done"><div class="item-icon"></div> veyrath.com.br no ar</div>
+          <div class="item done"><div class="item-icon"></div> Seções: Lore, Reinos, Classes</div>
+          <div class="item done"><div class="item-icon"></div> Seções: Profissões, Sistemas</div>
+          <div class="item done"><div class="item-icon"></div> Quiz do Destino (interativo)</div>
+          <div class="item done"><div class="item-icon"></div> Pre-Order via Catarse</div>
+          <div class="item done"><div class="item-icon"></div> Captação de e-mails (Formspree)</div>
+          <div class="item done"><div class="item-icon"></div> Responsivo para mobile</div>
+        </div>
+      </div>
+      <div class="categoria done">
+        <p class="cat-titulo">Comunidade</p>
+        <div class="cat-items">
+          <div class="item done"><div class="item-icon"></div> Discord oficial aberto</div>
+          <div class="item done"><div class="item-icon"></div> Twitter/X criado</div>
+          <div class="item done"><div class="item-icon"></div> Canal YouTube criado</div>
+          <div class="item done"><div class="item-icon"></div> Catarse (crowdfunding) ativo</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divisor">Em andamento</div>
+
+  <!-- FASE 2 -->
+  <div class="fase">
+    <div class="fase-header">
+      <div>
+        <p class="fase-periodo">Abr — Dez 2026</p>
+        <h2 class="fase-nome">Fase 2 · Pré-Produção & Prototipagem</h2>
+      </div>
+      <span class="fase-badge badge-progress">⬤ Em desenvolvimento</span>
+    </div>
+    <div class="categorias">
+      <div class="categoria progress">
+        <p class="cat-titulo">Motor & Arquitetura</p>
+        <div class="cat-items">
+          <div class="item progress"><div class="item-icon"></div> Escolha da engine (Unreal 5)</div>
+          <div class="item progress"><div class="item-icon"></div> Arquitetura do servidor</div>
+          <div class="item upcoming"><div class="item-icon"></div> Pipeline de assets 3D</div>
+          <div class="item upcoming"><div class="item-icon"></div> Sistema de rede (MMO)</div>
+        </div>
+      </div>
+      <div class="categoria upcoming">
+        <p class="cat-titulo">Prototipo de Combate</p>
+        <div class="cat-items">
+          <div class="item upcoming"><div class="item-icon"></div> Movimentação TPP básica</div>
+          <div class="item upcoming"><div class="item-icon"></div> Sistema de ataque/defesa</div>
+          <div class="item upcoming"><div class="item-icon"></div> Stamina e recursos</div>
+          <div class="item upcoming"><div class="item-icon"></div> Primeiro Pilar jogável (Protetor)</div>
+          <div class="item upcoming"><div class="item-icon"></div> Hitbox e parry</div>
+        </div>
+      </div>
+      <div class="categoria upcoming">
+        <p class="cat-titulo">Mundo & Level Design</p>
+        <div class="cat-items">
+          <div class="item upcoming"><div class="item-icon"></div> Mapa de Aurenthia (bloco)</div>
+          <div class="item upcoming"><div class="item-icon"></div> Primeira cidade hub</div>
+          <div class="item upcoming"><div class="item-icon"></div> Caverna de spawn (tutorial)</div>
+          <div class="item upcoming"><div class="item-icon"></div> Bioma Planalto Dourado</div>
+        </div>
+      </div>
+      <div class="categoria upcoming">
+        <p class="cat-titulo">Personagem</p>
+        <div class="cat-items">
+          <div class="item upcoming"><div class="item-icon"></div> Modelo base do jogador</div>
+          <div class="item upcoming"><div class="item-icon"></div> Fragmento de Éter (visual)</div>
+          <div class="item upcoming"><div class="item-icon"></div> Animações básicas</div>
+          <div class="item upcoming"><div class="item-icon"></div> Tela de criação de personagem</div>
+        </div>
+      </div>
+      <div class="categoria upcoming">
+        <p class="cat-titulo">Marketing & Comunidade</p>
+        <div class="cat-items">
+          <div class="item upcoming"><div class="item-icon"></div> Primeiros devlogs (YouTube)</div>
+          <div class="item upcoming"><div class="item-icon"></div> TikTok e Instagram ativos</div>
+          <div class="item upcoming"><div class="item-icon"></div> Roadmap público (este)</div>
+          <div class="item upcoming"><div class="item-icon"></div> FAQ e LGPD no site</div>
+          <div class="item upcoming"><div class="item-icon"></div> Seção "Sobre o Estúdio"</div>
+        </div>
+      </div>
+      <div class="categoria upcoming">
+        <p class="cat-titulo">Sistemas Core</p>
+        <div class="cat-items">
+          <div class="item upcoming"><div class="item-icon"></div> Sistema de inventário</div>
+          <div class="item upcoming"><div class="item-icon"></div> Sistema de NPCs básico</div>
+          <div class="item upcoming"><div class="item-icon"></div> Chat in-game</div>
+          <div class="item upcoming"><div class="item-icon"></div> HUD inicial</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divisor">Planejado</div>
+
+  <!-- FASE 3 -->
+  <div class="fase">
+    <div class="fase-header">
+      <div>
+        <p class="fase-periodo">Jan — Jun 2027</p>
+        <h2 class="fase-nome">Fase 3 · Alpha Fechado</h2>
+      </div>
+      <span class="fase-badge badge-upcoming">Planejado</span>
+    </div>
+    <div class="categorias">
+      <div class="categoria upcoming">
+        <p class="cat-titulo">Acesso</p>
+        <div class="cat-items">
+          <div class="item upcoming"><div class="item-icon"></div> Alpha para Fundadores</div>
+          <div class="item upcoming"><div class="item-icon"></div> Sistema de login/conta</div>
+          <div class="item upcoming"><div class="item-icon"></div> Launcher do jogo</div>
+          <div class="item upcoming"><div class="item-icon"></div> NDA e testes internos</div>
+        </div>
+      </div>
+      <div class="categoria upcoming">
+        <p class="cat-titulo">Gameplay</p>
+        <div class="cat-items">
+          <div class="item upcoming"><div class="item-icon"></div> 3 Classes jogáveis</div>
+          <div class="item upcoming"><div class="item-icon"></div> Aurenthia completa (nv 1-25)</div>
+          <div class="item upcoming"><div class="item-icon"></div> Obsidryn parcial (nv 20-45)</div>
+          <div class="item upcoming"><div class="item-icon"></div> Sistema de Profissões (3)</div>
+          <div class="item upcoming"><div class="item-icon"></div> Craft e Têmpera básica</div>
+          <div class="item upcoming"><div class="item-icon"></div> PvE: mobs e elite</div>
+          <div class="item upcoming"><div class="item-icon"></div> Sistema de Corrupção</div>
+        </div>
+      </div>
+      <div class="categoria upcoming">
+        <p class="cat-titulo">Social & MMO</p>
+        <div class="cat-items">
+          <div class="item upcoming"><div class="item-icon"></div> Sistema de Party</div>
+          <div class="item upcoming"><div class="item-icon"></div> Chat e social</div>
+          <div class="item upcoming"><div class="item-icon"></div> Mercado de jogadores</div>
+          <div class="item upcoming"><div class="item-icon"></div> Banco e armazenamento</div>
+        </div>
+      </div>
+      <div class="categoria upcoming">
+        <p class="cat-titulo">Quests & Lore</p>
+        <div class="cat-items">
+          <div class="item upcoming"><div class="item-icon"></div> Main Quest Cap 1-3</div>
+          <div class="item upcoming"><div class="item-icon"></div> Quest oculta ativada</div>
+          <div class="item upcoming"><div class="item-icon"></div> Side quests de Aurenthia</div>
+          <div class="item upcoming"><div class="item-icon"></div> Primeira escolha de Linhagem (nv 20)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FASE 4 -->
+  <div class="fase">
+    <div class="fase-header">
+      <div>
+        <p class="fase-periodo">Mai 2027</p>
+        <h2 class="fase-nome">Fase 4 · Lançamento — Early Access</h2>
+      </div>
+      <span class="fase-badge badge-upcoming">Planejado</span>
+    </div>
+    <div class="categorias">
+      <div class="categoria upcoming">
+        <p class="cat-titulo">5 Reinos</p>
+        <div class="cat-items">
+          <div class="item upcoming"><div class="item-icon"></div> Aurenthia (nv 1-25)</div>
+          <div class="item upcoming"><div class="item-icon"></div> Obsidryn (nv 20-45)</div>
+          <div class="item upcoming"><div class="item-icon"></div> Sylphae (nv 35-60)</div>
+          <div class="item upcoming"><div class="item-icon"></div> Glacieryn (nv 55-75)</div>
+          <div class="item upcoming"><div class="item-icon"></div> Kaelorn (nv 70-100+, PvP livre)</div>
+        </div>
+      </div>
+      <div class="categoria upcoming">
+        <p class="cat-titulo">Sistemas Completos</p>
+        <div class="cat-items">
+          <div class="item upcoming"><div class="item-icon"></div> 9 Profissões completas</div>
+          <div class="item upcoming"><div class="item-icon"></div> Sistema de Clãs</div>
+          <div class="item upcoming"><div class="item-icon"></div> PvP de Kaelorn</div>
+          <div class="item upcoming"><div class="item-icon"></div> Pêndulo do Éter (server)</div>
+          <div class="item upcoming"><div class="item-icon"></div> Economia livre</div>
+          <div class="item upcoming"><div class="item-icon"></div> Câmara do Primeiro Selo</div>
+          <div class="item upcoming"><div class="item-icon"></div> Duas Linhagens (escolha nv 50)</div>
+        </div>
+      </div>
+      <div class="categoria upcoming">
+        <p class="cat-titulo">Endgame</p>
+        <div class="cat-items">
+          <div class="item upcoming"><div class="item-icon"></div> Raids e dungeons</div>
+          <div class="item upcoming"><div class="item-icon"></div> Eventos dinâmicos de cidade</div>
+          <div class="item upcoming"><div class="item-icon"></div> Questlines das Linhagens</div>
+          <div class="item upcoming"><div class="item-icon"></div> O Devorador (boss mundial)</div>
+        </div>
+      </div>
+      <div class="categoria upcoming">
+        <p class="cat-titulo">Pós-Lançamento</p>
+        <div class="cat-items">
+          <div class="item upcoming"><div class="item-icon"></div> Patch 1.0 — Balance</div>
+          <div class="item upcoming"><div class="item-icon"></div> Eventos sazonais</div>
+          <div class="item upcoming"><div class="item-icon"></div> Novos reinos (expansão)</div>
+          <div class="item upcoming"><div class="item-icon"></div> Temporadas de PvP</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <p>© 2026 VEYRATH GAMES · <a href="https://www.veyrath.com.br">veyrath.com.br</a> · <a href="https://discord.gg/g567wFPy3s">Discord</a> · Este roadmap é público e atualizado conforme o desenvolvimento avança.</p>
+</footer>
+
+</body>
+</html>
